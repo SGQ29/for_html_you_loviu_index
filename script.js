@@ -1,16 +1,14 @@
-
 const texto = "Para la mujer más hermosa de mi vida ❤️";
-
 
 let i=0;
 
 
-function escribir(){
 
+function escribir(){
 
 if(i<texto.length){
 
-document.getElementById("titulo").innerHTML+=texto.charAt(i);
+document.getElementById("titulo").innerHTML += texto.charAt(i);
 
 i++;
 
@@ -18,11 +16,8 @@ setTimeout(escribir,100);
 
 }
 
-
 }
 
-
-escribir();
 
 
 
@@ -53,6 +48,7 @@ const fotos=[
 
 
 
+
 let indice=0;
 
 
@@ -66,11 +62,13 @@ document.getElementById("foto").src=fotos[indice];
 indice++;
 
 
+
 if(indice>=fotos.length){
 
 indice=0;
 
 }
+
 
 
 }
@@ -80,14 +78,11 @@ indice=0;
 setInterval(cambiar,3000);
 
 
-cambiar();
 
 
 
 
-
-
-function corazones(){
+function crearCorazon(){
 
 
 let c=document.createElement("div");
@@ -99,11 +94,11 @@ c.className="corazon";
 c.innerHTML="❤️";
 
 
-
 c.style.left=Math.random()*100+"vw";
 
 
 c.style.top="100vh";
+
 
 
 document.body.appendChild(c);
@@ -123,18 +118,47 @@ c.remove();
 
 
 
-setInterval(corazones,300);
+
+function iniciarCorazones(){
+
+
+setInterval(crearCorazon,300);
+
+
+}
 
 
 
 
+const boton = document.getElementById("boton");
 
 
-document.body.addEventListener('click',()=>{
+boton.onclick=function(){
 
 
-document.getElementById("musica").play();
+let musica=document.getElementById("musica");
+
+musica.play();
 
 
 
-});
+document.getElementById("inicio").style.display="none";
+
+
+
+escribir();
+
+
+
+cambiar();
+
+
+
+setInterval(cambiar,3000);
+
+
+
+iniciarCorazones();
+
+
+}
