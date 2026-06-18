@@ -1,4 +1,22 @@
-const texto = "Para la mujer más hermosa de mi vida ❤️";
+
+
+const mensaje =
+
+`Oye...
+
+
+Jacqueline...
+
+
+Mi preciosa...
+
+
+Tengo algo importante que decirte...
+
+
+Y espero que me regales unos minutitos de tu tiempo ❤️`;
+
+
 
 let i=0;
 
@@ -6,66 +24,64 @@ let i=0;
 
 function escribir(){
 
-if(i<texto.length){
 
-document.getElementById("titulo").innerHTML += texto.charAt(i);
+if(i<mensaje.length){
+
+
+document.getElementById("texto").innerHTML+=mensaje.charAt(i);
+
 
 i++;
 
-setTimeout(escribir,100);
+
+setTimeout(escribir,70);
+
 
 }
 
+
 }
 
 
-
-
-
-const fotos=[
-
-"feli.jpg",
-
-"nojada.jpg",
-
-"Ojos.jpg",
-
-"felij.jpg",
-
-"divina.jpg",
-
-"Diosa.jpg",
-
-"cariño.jpg",
-
-"amor.jpg",
-
-"bonita.jpg",
-
-"familia.jpg"
-
-];
+escribir();
 
 
 
 
-let indice=0;
+
+
+function estrellas(){
 
 
 
-function cambiar(){
-
-
-document.getElementById("foto").src=fotos[indice];
-
-
-indice++;
+for(let i=0;i<120;i++){
 
 
 
-if(indice>=fotos.length){
+let estrella=document.createElement("div");
 
-indice=0;
+
+estrella.className="star";
+
+
+
+estrella.style.width="3px";
+
+
+estrella.style.height="3px";
+
+
+
+estrella.style.left=Math.random()*100+"vw";
+
+
+
+estrella.style.top=Math.random()*100+"vh";
+
+
+
+document.body.appendChild(estrella);
+
 
 }
 
@@ -74,24 +90,27 @@ indice=0;
 }
 
 
-
-setInterval(cambiar,3000);
-
+estrellas();
 
 
 
 
 
-function crearCorazon(){
+
+function corazones(){
+
 
 
 let c=document.createElement("div");
 
 
+
 c.className="corazon";
 
 
+
 c.innerHTML="❤️";
+
 
 
 c.style.left=Math.random()*100+"vw";
@@ -105,10 +124,12 @@ document.body.appendChild(c);
 
 
 
+
 setTimeout(()=>{
 
 
 c.remove();
+
 
 },6000);
 
@@ -119,46 +140,43 @@ c.remove();
 
 
 
-function iniciarCorazones(){
-
-
-setInterval(crearCorazon,300);
-
-
-}
+setInterval(corazones,700);
 
 
 
 
-const boton = document.getElementById("boton");
+
+const boton=document.getElementById("boton");
+
 
 
 boton.onclick=function(){
 
 
+
 let musica=document.getElementById("musica");
+
 
 musica.play();
 
 
 
-document.getElementById("inicio").style.display="none";
+
+
+boton.innerHTML="❤️ Gracias por estar aquí ❤️";
 
 
 
-escribir();
 
 
-
-cambiar();
-
+setTimeout(()=>{
 
 
-setInterval(cambiar,3000);
+alert("Aquí comenzará la Escena 2 😍");
 
 
+},1500);
 
-iniciarCorazones();
 
 
 }
