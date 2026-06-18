@@ -1,59 +1,96 @@
 body{
 
+
 margin:0;
-
-background:#FFC0CB;
-
 overflow:hidden;
+
+height:100vh;
+
+
+background:url("amor.jpg");
+
+
+background-size:cover;
+
+
+background-position:center;
+
 
 font-family:Georgia;
 
-text-align:center;
 
 }
 
 
 
+.overlay{
 
-#inicio{
 
-position:fixed;
+position:absolute;
 
-top:0;
-left:0;
 
 width:100%;
 height:100%;
 
-background:#FFC0CB;
+
+background:rgba(0,0,0,0.45);
 
 
-display:flex;
+backdrop-filter:blur(4px);
 
-
-flex-direction:column;
-
-
-justify-content:center;
-
-
-align-items:center;
-
-
-z-index:1000;
 
 }
 
 
 
 
-#inicio h1{
+.container{
 
-font-size:40px;
 
-color:#8B0000;
+position:absolute;
+
+
+top:50%;
+left:50%;
+
+
+transform:translate(-50%,-50%);
+
+
+text-align:center;
+
+
+z-index:10;
+
 
 }
+
+
+
+
+
+#texto{
+
+
+color:white;
+
+
+font-size:42px;
+
+
+line-height:65px;
+
+
+min-height:300px;
+
+
+
+text-shadow:0px 0px 15px pink;
+
+
+
+}
+
 
 
 
@@ -61,90 +98,50 @@ color:#8B0000;
 #boton{
 
 
-padding:20px 40px;
+padding:20px 50px;
 
 
-font-size:25px;
+font-size:24px;
 
 
 border:none;
 
 
-border-radius:25px;
-
-
-background:#FF1493;
-
-
-color:white;
+border-radius:40px;
 
 
 cursor:pointer;
 
 
-box-shadow:0 0 20px red;
+
+background:linear-gradient(45deg,#ff4fa2,#ff8fc7);
 
 
-transition:0.3s;
+
+color:white;
+
+
+box-shadow:0 0 25px hotpink;
+
+
+
+transition:0.4s;
+
+
+
+animation:latir 1.5s infinite;
+
+
 
 }
+
 
 
 
 #boton:hover{
 
 
-transform:scale(1.1);
-
-
-}
-
-
-
-.contenedor{
-
-padding:20px;
-
-}
-
-
-
-
-#titulo{
-
-
-height:60px;
-
-
-font-size:35px;
-
-
-color:#8B0000;
-
-
-}
-
-
-
-.galeria img{
-
-
-width:550px;
-
-
-height:380px;
-
-
-object-fit:cover;
-
-
-
-border-radius:20px;
-
-
-
-box-shadow:0 0 20px red;
-
+transform:scale(1.08);
 
 
 }
@@ -152,48 +149,81 @@ box-shadow:0 0 20px red;
 
 
 
-
-.carta{
-
-
-width:70%;
+@keyframes latir{
 
 
-margin:auto;
+0%{
+
+transform:scale(1);
+
+}
+
+
+50%{
+
+transform:scale(1.05);
+
+}
+
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
 
 
 
-margin-top:20px;
 
 
+.star{
 
-padding:20px;
 
+position:absolute;
 
 
 background:white;
 
 
-
-border-radius:20px;
-
+border-radius:50%;
 
 
-font-size:22px;
-
-
-
-color:#8B0000;
-
-
-
-box-shadow:0 0 15px pink;
+animation:parpadear 2s infinite;
 
 
 
 }
 
 
+
+
+@keyframes parpadear{
+
+
+0%{
+
+opacity:0.2;
+
+}
+
+
+50%{
+
+opacity:1;
+
+}
+
+
+100%{
+
+opacity:0.2;
+
+}
+
+
+}
 
 
 
@@ -203,9 +233,7 @@ box-shadow:0 0 15px pink;
 position:absolute;
 
 
-
-font-size:30px;
-
+font-size:25px;
 
 
 animation:subir 6s linear;
@@ -233,7 +261,7 @@ opacity:1;
 100%{
 
 
-transform:translateY(-1000px);
+transform:translateY(-120vh);
 
 
 opacity:0;
