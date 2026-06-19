@@ -1,10 +1,6 @@
-
-
 const mensaje = `Oye...
 
-Jacqueline...
-
-Mi preciosa...
+Preciosa de mi vida...
 
 Tengo algo importante que decirte...
 
@@ -12,22 +8,21 @@ Y espero que me regales unos minutitos de tu tiempo ❤️`;
 
 
 
-let i = 0;
+let i=0;
 
 
 
 function escribir(){
 
-if(i < mensaje.length){
+    if(i<mensaje.length){
 
-document.getElementById("texto").innerHTML += mensaje.charAt(i);
+        document.getElementById("texto").innerHTML += mensaje.charAt(i);
 
-i++;
+        i++;
 
-setTimeout(escribir,70);
+        setTimeout(escribir,60);
 
-}
-
+    }
 
 }
 
@@ -40,38 +35,28 @@ escribir();
 
 
 
+/* ESTRELLAS */
+
 function estrellas(){
 
+    for(let i=0;i<120;i++){
 
-for(let i=0;i<120;i++){
+        let estrella=document.createElement("div");
 
+        estrella.className="star";
 
-let estrella=document.createElement("div");
+        estrella.style.width="2px";
+        estrella.style.height="2px";
 
-
-estrella.className="star";
-
-
-estrella.style.width="3px";
-
-
-estrella.style.height="3px";
+        estrella.style.left=Math.random()*100+"vw";
+        estrella.style.top=Math.random()*100+"vh";
 
 
-estrella.style.left=Math.random()*100+"vw";
+        document.body.appendChild(estrella);
 
-
-estrella.style.top=Math.random()*100+"vh";
-
-
-document.body.appendChild(estrella);
-
+    }
 
 }
-
-
-}
-
 
 
 estrellas();
@@ -80,14 +65,13 @@ estrellas();
 
 
 
-
+/* CORAZONES */
 
 
 function corazones(){
 
 
 let c=document.createElement("div");
-
 
 c.className="corazon";
 
@@ -96,7 +80,6 @@ c.innerHTML="❤️";
 
 
 c.style.left=Math.random()*100+"vw";
-
 
 c.style.top="100vh";
 
@@ -107,9 +90,7 @@ document.body.appendChild(c);
 
 setTimeout(()=>{
 
-
 c.remove();
-
 
 },6000);
 
@@ -118,72 +99,7 @@ c.remove();
 
 
 
-setInterval(corazones,700);
-
-
-
-
-
-
-
-
-const fotos=[
-
-
-"amor.jpg",
-
-"feli.jpg",
-
-"felij.jpg",
-
-"familia.jpg",
-
-"nojada.jpg",
-
-"Ojos.jpg",
-
-"Diosa.jpg",
-
-"divina.jpg",
-
-"bonita.jpg",
-
-"cariño.jpg"
-
-
-];
-
-
-
-let indice=0;
-
-
-
-function cambiarFoto(){
-
-
-document.getElementById("foto").src=fotos[indice];
-
-
-
-indice++;
-
-
-
-if(indice>=fotos.length){
-
-
-indice=0;
-
-
-}
-
-
-}
-
-
-
-setInterval(cambiarFoto,3000);
+setInterval(corazones,800);
 
 
 
@@ -195,18 +111,13 @@ const boton=document.getElementById("boton");
 
 
 
-
-const boton=document.getElementById("boton");
-
-
-
-boton.onclick=function(){
+boton.onclick=()=>{
 
 
 let musica=document.getElementById("musica");
 
 
-musica.play();
+musica.play().catch(()=>{});
 
 
 
@@ -227,10 +138,22 @@ document.getElementById("escena2").style.display="block";
 
 
 
+document.getElementById("escena2").style.opacity="1";
+
+
+
 },1000);
 
 
+
 }
+
+
+
+
+
+
+
 
 const no=document.getElementById("no");
 
@@ -239,17 +162,14 @@ const no=document.getElementById("no");
 no.addEventListener("mouseover",()=>{
 
 
-let x=Math.random()*500-250;
+let x=Math.random()*400-200;
 
 
-let y=Math.random()*300-150;
+let y=Math.random()*250-125;
 
 
 
-no.style.transform=`
-translate(${x}px,${y}px)
-`;
-
+no.style.transform=`translate(${x}px,${y}px)`;
 
 
 });
@@ -259,12 +179,10 @@ translate(${x}px,${y}px)
 
 
 
-document.getElementById("si").onclick=function(){
+document.getElementById("si").onclick=()=>{
 
 
-
-alert("❤️ Respuesta correcta, preciosa ❤️");
-
+alert("❤️ Correcto preciosa ❤️");
 
 
 }
