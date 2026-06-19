@@ -231,3 +231,40 @@ document.getElementById("escena2").style.display="block";
 
 
 }
+
+const no=document.getElementById("no");
+
+
+
+no.addEventListener("mouseover",()=>{
+
+
+let x=Math.random()*500-250;
+
+
+let y=Math.random()*300-150;
+
+
+
+no.style.transform=`
+translate(${x}px,${y}px)
+`;
+
+
+
+});
+
+
+
+
+
+
+document.getElementById("si").onclick=function(){
+
+
+
+alert("❤️ Respuesta correcta, preciosa ❤️");
+
+
+
+}
