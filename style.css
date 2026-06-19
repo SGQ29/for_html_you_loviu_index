@@ -1,560 +1,166 @@
-body{
-
-margin:0;
-overflow:hidden;
-height:100vh;
-
-background:url("amor.jpg");
-background-size:contain;
-background-repeat:no-repeat;
-background-position:center center;
-background-color:black;
-
-font-family:Georgia, serif;
-
+body {
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+    background: url("amor.jpg");
+    background-size: cover; /* Cambiado a cover para que llene mejor la pantalla */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: black;
+    font-family: Georgia, serif;
 }
-
-
 
 /* CAPA OSCURA */
-
-.overlay{
-
-position:absolute;
-
-width:100%;
-height:100%;
-
-background:rgba(0,0,0,0.45);
-
-backdrop-filter:blur(4px);
-
-z-index:1;
-
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55); /* Un toque más oscuro para leer mejor el texto */
+    backdrop-filter: blur(4px);
+    z-index: 1;
 }
-
-
-
-
 
 /* CONTENEDORES */
-
-.container{
-
-position:absolute;
-
-top:50%;
-left:50%;
-
-transform:translate(-50%,-50%);
-
-text-align:center;
-
-z-index:10;
-
-opacity:1;
-
-transition:1s;
-
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+    opacity: 1;
+    transition: opacity 1s ease;
+    width: 90%;
+    max-width: 600px;
 }
 
-
-
-
-
-.oculto{
-
-display:none;
-opacity:0;
-
+.oculto {
+    display: none !important;
+    opacity: 0;
 }
-
-
-
-
 
 /* FOTO PRINCIPAL */
-
-#fotoPrincipal{
-
-
-width:350px;
-
-max-width:90vw;
-
-max-height:450px;
-
-
-object-fit:contain;
-
-
-border-radius:25px;
-
-
-
-box-shadow:
-
-0 0 25px hotpink,
-
-0 0 50px deeppink;
-
-
-
-margin-bottom:25px;
-
-
-
-animation:latirFoto 3s infinite;
-
-
+#fotoPrincipal {
+    width: 350px;
+    max-width: 85vw;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 25px;
+    box-shadow: 0 0 25px hotpink, 0 0 50px deeppink;
+    margin-bottom: 25px;
+    animation: latirFoto 3s infinite ease-in-out;
 }
 
-
-
-
-@keyframes latirFoto{
-
-
-0%{
-
-transform:scale(1);
-
+@keyframes latirFoto {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
 }
-
-
-
-50%{
-
-transform:scale(1.03);
-
-}
-
-
-
-100%{
-
-transform:scale(1);
-
-}
-
-
-}
-
-
-
-
-
 
 /* TEXTO */
-
-#texto{
-
-
-color:white;
-
-
-font-size:42px;
-
-
-line-height:65px;
-
-
-min-height:220px;
-
-
-
-text-shadow:
-
-
-0 0 10px pink,
-
-
-0 0 20px hotpink;
-
-
-
+#texto {
+    color: white;
+    font-size: clamp(24px, 5vw, 42px); /* Se adapta mejor a pantallas de celulares */
+    line-height: 1.5;
+    min-height: 180px;
+    text-shadow: 0 0 10px pink, 0 0 20px hotpink;
+    margin-bottom: 20px;
 }
-
-
-
-
 
 /* BOTÓN PRINCIPAL */
-
-#boton{
-
-
-padding:20px 50px;
-
-
-font-size:24px;
-
-
-border:none;
-
-
-border-radius:40px;
-
-
-cursor:pointer;
-
-
-
-background:linear-gradient(
-
-45deg,
-
-#ff4fa2,
-
-#ff8fc7
-
-);
-
-
-
-color:white;
-
-
-
-box-shadow:
-
-
-0 0 25px hotpink;
-
-
-
-transition:0.4s;
-
-
-
-animation:latir 1.5s infinite;
-
-
+#boton {
+    padding: 18px 45px;
+    font-size: 22px;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    background: linear-gradient(45deg, #ff4fa2, #ff8fc7);
+    color: white;
+    box-shadow: 0 0 25px hotpink;
+    transition: 0.3s;
+    animation: latir 1.5s infinite;
 }
 
-
-
-
-#boton:hover{
-
-
-transform:scale(1.05);
-
-
+#boton:hover {
+    transform: scale(1.05);
 }
 
-
-
-
-
-@keyframes latir{
-
-
-0%{
-
-transform:scale(1);
-
+@keyframes latir {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
 }
-
-
-
-50%{
-
-transform:scale(1.05);
-
-}
-
-
-
-100%{
-
-transform:scale(1);
-
-}
-
-
-
-}
-
-
-
-
-
 
 /* ESTRELLAS */
-
-.star{
-
-
-position:absolute;
-
-
-background:white;
-
-
-border-radius:50%;
-
-
-animation:parpadear 2s infinite;
-
-
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: parpadear 2s infinite ease-in-out;
+    z-index: 2;
 }
 
-
-
-
-@keyframes parpadear{
-
-
-0%{
-
-opacity:0.2;
-
+@keyframes parpadear {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
 }
-
-
-50%{
-
-opacity:1;
-
-}
-
-
-100%{
-
-opacity:0.2;
-
-}
-
-
-}
-
-
-
-
 
 /* CORAZONES */
-
-.corazon{
-
-
-position:absolute;
-
-
-font-size:25px;
-
-
-animation:subir 6s linear;
-
-
-z-index:15;
-
-
+.corazon {
+    position: absolute;
+    font-size: 25px;
+    animation: subir 6s linear forwards;
+    z-index: 15;
 }
 
-
-
-
-
-@keyframes subir{
-
-
-0%{
-
-
-transform:translateY(0);
-
-
-opacity:1;
-
-
+@keyframes subir {
+    0% {
+        transform: translateY(105vh) scale(0.8);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    100% {
+        transform: translateY(-20vh) scale(1.2);
+        opacity: 0;
+    }
 }
-
-
-
-100%{
-
-
-transform:translateY(-120vh);
-
-
-opacity:0;
-
-
-}
-
-
-}
-
-
-
-
 
 /* ESCENA 2 */
-
-
-.pregunta{
-
-
-color:white;
-
-
-font-size:40px;
-
-
-line-height:60px;
-
-
-
-text-shadow:
-
-
-0 0 10px pink,
-
-
-0 0 20px hotpink;
-
-
-
+.pregunta {
+    color: white;
+    font-size: clamp(26px, 6vw, 40px);
+    line-height: 1.4;
+    text-shadow: 0 0 10px pink, 0 0 20px hotpink;
 }
 
-
-
-
-
-.botones{
-
-
-margin-top:40px;
-
-
+.botones {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
-
-
-
-
-#si{
-
-
-padding:18px 40px;
-
-
-
-margin:20px;
-
-
-
-font-size:24px;
-
-
-
-border:none;
-
-
-
-border-radius:30px;
-
-
-
-background:#ff5fa2;
-
-
-
-color:white;
-
-
-
-cursor:pointer;
-
-
-
-box-shadow:
-
-
-0 0 20px hotpink;
-
-
-
-transition:0.4s;
-
-
+#si, #no {
+    padding: 15px 35px;
+    font-size: 22px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.2s ease, left 0.2s ease, top 0.2s ease;
 }
 
-
-
-
-
-#si:hover{
-
-
-transform:scale(1.05);
-
-
+#si {
+    background: #ff5fa2;
+    color: white;
+    box-shadow: 0 0 20px hotpink;
 }
 
-
-
-
-
-#no{
-
-
-padding:18px 40px;
-
-
-
-margin:20px;
-
-
-
-font-size:24px;
-
-
-
-border:none;
-
-
-
-border-radius:30px;
-
-
-
-background:#ff9ac9;
-
-
-
-color:white;
-
-
-
-cursor:pointer;
-
-
-
-position:relative;
-
-
-
-box-shadow:
-
-
-0 0 20px pink;
-
-
-
-transition:0.3s;
-
-
+#si:hover {
+    transform: scale(1.1);
 }
 
-
-
-
-#no:hover{
-
-
-transform:scale(1.03);
-
-
+#no {
+    background: #ff9ac9;
+    color: white;
+    box-shadow: 0 0 20px pink;
+    z-index: 99; /* Asegura que el botón que huye quede por encima */
 }
