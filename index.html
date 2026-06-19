@@ -1,97 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Para Jacqueline ❤️</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Jacqueline ❤️</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
-
 <body>
 
+    <div class="overlay"></div>
+    
+    <div id="stars"></div>
 
-
-<div class="overlay"></div>
-
-
-
-<div id="stars"></div>
-
-
-
-
-<div class="container" id="escena1">
-
-    <img id="fotoPrincipal" src="amor.jpg">
-
-    <h1 id="texto"></h1>
-
-    <button id="boton">
-        ✨ Haz click aquí, preciosa ✨
-    </button>
-
-</div>
-
-
-
-<div class="container oculto" id="escena2">
-
-    <h1 class="pregunta">
-
-        Jacqueline...
-
-        <br><br>
-
-        Déjame preguntarte algo...
-
-        <br><br>
-
-        ¿Quién es la chica más hermosa del universo?
-
-    </h1>
-
-
-    <div class="botones">
-
-        <button id="si">
-
-            😊 Yo
-
+    <div class="container" id="escena1">
+        <img id="fotoPrincipal" src="amor.jpg" alt="Amor">
+        <h1 id="texto"></h1>
+        <button id="boton">
+            ✨ Haz click aquí, preciosa ✨
         </button>
-
-
-        <button id="no">
-
-            🤔 Otra persona
-
-        </button>
-
-
     </div>
 
+    <div class="container oculto" id="escena2">
+        <h1 class="pregunta">
+            Jacqueline...<br><br>
+            Déjame preguntarte algo...<br><br>
+            ¿Quién es la chica más hermosa del universo?
+        </h1>
 
-</div>
+        <div class="botones">
+            <button id="si">😊 Yo</button>
+            <button id="no">🤔 Otra persona</button>
+        </div>
+    </div>
 
+    <audio id="musica">
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
 
-
-
-
-<audio id="musica">
-
-<source src="musica.mp3" type="audio/mpeg">
-
-</audio>
-
-
-
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
-
 </html>
