@@ -18,14 +18,17 @@ background-attachment:fixed;
 
 
 
+/*================================*/
+/* CAPA OSCURA */
+/*================================*/
+
 .overlay{
 
 position:absolute;
-
 width:100%;
 height:100%;
 
-background:rgba(0,0,0,0.55);
+background:rgba(0,0,0,.72);
 
 backdrop-filter:blur(4px);
 
@@ -34,6 +37,10 @@ z-index:1;
 }
 
 
+
+/*================================*/
+/* ESCENAS */
+/*================================*/
 
 .container{
 
@@ -49,13 +56,11 @@ text-align:center;
 z-index:10;
 
 width:90%;
-
-max-width:800px;
+max-width:900px;
 
 transition:1s;
 
 }
-
 
 
 .oculto{
@@ -66,33 +71,55 @@ display:none;
 
 
 
+
+
+/*================================*/
+/* BOTONES */
+/*================================*/
+
 .btn-principal{
 
 
 padding:18px 45px;
 
-font-size:22px;
 
-border:none;
+font-size:21px;
 
-border-radius:40px;
 
 cursor:pointer;
 
 
-background:linear-gradient(45deg,#ff4fa2,#ff8fc7);
+border:none;
+
+
+border-radius:50px;
+
+
+
+background:linear-gradient(
+45deg,
+#4b0018,
+#6d1b7b
+);
+
 
 
 color:white;
 
 
-box-shadow:0 0 25px hotpink;
+
+box-shadow:
+
+0 0 15px #6d1b7b,
+
+0 0 35px #4b0018;
 
 
-transition:.4s;
+
+transition:.5s;
 
 
-margin-top:30px;
+margin-top:35px;
 
 
 }
@@ -101,10 +128,29 @@ margin-top:30px;
 
 .btn-principal:hover{
 
+
 transform:scale(1.05);
+
+
+
+box-shadow:
+
+0 0 25px #8b0000,
+
+0 0 60px purple;
+
 
 }
 
+
+
+
+
+
+
+/*================================*/
+/* ESCENA 1 */
+/*================================*/
 
 
 #fotoPrincipal{
@@ -115,14 +161,16 @@ width:340px;
 max-width:85vw;
 
 
-border-radius:25px;
+border-radius:30px;
+
 
 
 box-shadow:
 
-0 0 30px hotpink,
 
-0 0 60px deeppink;
+0 0 20px #6d1b7b,
+
+0 0 50px #8b0000;
 
 
 
@@ -130,7 +178,36 @@ margin-bottom:30px;
 
 
 
+animation:latirFoto 3s infinite;
+
+
+
 }
+
+
+
+
+@keyframes latirFoto{
+
+
+0%{
+transform:scale(1);
+}
+
+
+50%{
+transform:scale(1.02);
+}
+
+
+100%{
+transform:scale(1);
+}
+
+
+}
+
+
 
 
 
@@ -139,16 +216,24 @@ margin-bottom:30px;
 
 color:white;
 
+
 font-size:36px;
 
+
 line-height:60px;
+
 
 min-height:180px;
 
 
+
 text-shadow:
 
-0 0 15px pink;
+
+0 0 10px #8b0000,
+
+0 0 25px #6d1b7b;
+
 
 
 }
@@ -157,18 +242,45 @@ text-shadow:
 
 
 
+/*================================*/
+/* TITULOS */
+/*================================*/
+
+
 .titulo-escena{
 
 
 color:white;
 
 
+
 font-size:42px;
+
 
 
 text-shadow:
 
-0 0 15px hotpink;
+
+0 0 15px #6d1b7b,
+
+0 0 30px #8b0000;
+
+
+
+}
+
+
+
+.subtitulo-escena{
+
+
+color:#d0b3ff;
+
+
+font-size:18px;
+
+
+margin-bottom:30px;
 
 
 }
@@ -188,25 +300,11 @@ font-size:25px;
 line-height:45px;
 
 
+
 text-shadow:
 
-0 0 10px pink;
 
-
-}
-
-
-
-.subtitulo-escena{
-
-
-color:pink;
-
-
-font-size:18px;
-
-
-margin-bottom:35px;
+0 0 10px #6d1b7b;
 
 
 }
@@ -214,7 +312,10 @@ margin-bottom:35px;
 
 
 
+
+/*================================*/
 /* TARJETAS */
+/*================================*/
 
 
 .tarjetas-container{
@@ -240,19 +341,16 @@ margin-top:30px;
 
 
 
-
 .tarjeta{
 
 
-width:170px;
+width:180px;
 
 
 height:220px;
 
 
-
 perspective:1000px;
-
 
 
 cursor:pointer;
@@ -273,14 +371,14 @@ width:100%;
 height:100%;
 
 
-transition:0.8s;
-
 
 transform-style:preserve-3d;
 
 
-}
+transition:.8s;
 
+
+}
 
 
 
@@ -291,6 +389,7 @@ transform:rotateY(180deg);
 
 
 }
+
 
 
 
@@ -305,7 +404,9 @@ width:100%;
 height:100%;
 
 
+
 backface-visibility:hidden;
+
 
 
 display:flex;
@@ -317,13 +418,15 @@ align-items:center;
 justify-content:center;
 
 
-padding:10px;
+padding:15px;
+
 
 
 box-sizing:border-box;
 
 
-border-radius:20px;
+
+border-radius:25px;
 
 
 }
@@ -334,7 +437,15 @@ border-radius:20px;
 .tarjeta-frente{
 
 
-background:#ff75b5;
+background:
+
+
+linear-gradient(
+135deg,
+#3b0013,
+#5e2b97
+);
+
 
 
 color:white;
@@ -357,7 +468,9 @@ background:white;
 transform:rotateY(180deg);
 
 
-color:black;
+
+color:#333;
+
 
 
 font-size:15px;
@@ -372,8 +485,9 @@ line-height:25px;
 
 
 
-/* PREGUNTA */
-
+/*================================*/
+/* ESCENA PREGUNTA */
+/*================================*/
 
 
 .pregunta{
@@ -385,11 +499,17 @@ color:white;
 font-size:38px;
 
 
-text-shadow:0 0 15px hotpink;
+line-height:55px;
+
+
+
+text-shadow:
+
+
+0 0 15px #6d1b7b;
 
 
 }
-
 
 
 
@@ -430,25 +550,26 @@ margin:20px;
 
 
 
-
 #si{
 
 
-background:#ff4fa2;
+background:#6d1b7b;
 
 
 color:white;
 
 
-}
+box-shadow:0 0 20px purple;
 
+
+}
 
 
 
 #no{
 
 
-background:pink;
+background:#8b0000;
 
 
 color:white;
@@ -460,20 +581,21 @@ color:white;
 
 
 
+/*================================*/
 /* SOBRE */
-
+/*================================*/
 
 
 .envelope-wrapper{
 
 
+width:340px;
+
+
+height:240px;
+
+
 margin:auto;
-
-
-width:320px;
-
-
-height:220px;
 
 
 }
@@ -491,10 +613,19 @@ width:100%;
 height:100%;
 
 
-background:#ff8fc7;
+
+background:#4b0018;
 
 
-border-radius:10px;
+
+border-radius:15px;
+
+
+
+box-shadow:
+
+
+0 0 30px black;
 
 
 }
@@ -508,17 +639,17 @@ border-radius:10px;
 position:absolute;
 
 
+
+top:0;
 left:0;
 
 
-top:0;
 
+border-left:170px solid transparent;
+border-right:170px solid transparent;
 
-border-left:160px solid transparent;
+border-top:120px solid #6d1b7b;
 
-border-right:160px solid transparent;
-
-border-top:110px solid deeppink;
 
 
 transform-origin:top;
@@ -534,6 +665,7 @@ z-index:4;
 
 
 
+
 .pocket{
 
 
@@ -544,7 +676,9 @@ width:100%;
 height:100%;
 
 
-background:#ff5fa2;
+
+background:#5a001d;
+
 
 
 clip-path:polygon(0 0,100% 0,50% 60%);
@@ -560,34 +694,54 @@ z-index:3;
 
 .letter{
 
+
 position:absolute;
+
+
 
 left:15px;
 bottom:10px;
 
-width:290px;
+
+
+width:310px;
 height:260px;
+
+
 
 background:white;
 
+
+
 padding:20px;
+
+
 
 box-sizing:border-box;
 
+
+
 border-radius:10px;
 
+
+
 overflow-y:auto;
+
+
+
 overflow-x:hidden;
 
-transition:1.2s;
+
 
 z-index:2;
 
-box-shadow:
-0 0 15px rgba(0,0,0,.2);
+
+
+transition:1.2s;
+
+
 
 }
-
 
 
 
@@ -603,46 +757,15 @@ line-height:30px;
 white-space:pre-line;
 
 
-color:#333;
-
-
 text-align:left;
 
 
-padding-right:5px;
-
-
-}
-.letter::-webkit-scrollbar{
-
-
-width:6px;
+color:#222;
 
 
 }
 
 
-
-.letter::-webkit-scrollbar-thumb{
-
-
-background:pink;
-
-
-border-radius:10px;
-
-
-}
-
-
-
-.letter::-webkit-scrollbar-track{
-
-
-background:transparent;
-
-
-}
 
 
 .envelope.open .flap{
@@ -655,11 +778,10 @@ transform:rotateX(180deg);
 
 
 
-
 .envelope.open .letter{
 
 
-transform:translateY(-140px);
+transform:translateY(-150px);
 
 
 }
@@ -667,35 +789,35 @@ transform:translateY(-140px);
 
 
 
+/*================================*/
 /* GALERIA */
-
+/*================================*/
 
 
 #galeriaFoto{
 
 
-width:380px;
+width:420px;
 
 
 max-width:90vw;
 
 
+
 border-radius:25px;
+
 
 
 box-shadow:
 
 
-0 0 25px hotpink,
+0 0 25px #6d1b7b,
 
-0 0 60px deeppink;
-
-
-
-margin-top:30px;
+0 0 60px #8b0000;
 
 
-transition:1s;
+
+margin-top:25px;
 
 
 }
@@ -703,27 +825,31 @@ transition:1s;
 
 
 
+/*================================*/
 /* CONTADOR */
-
+/*================================*/
 
 
 #contador{
 
 
-font-size:55px;
+font-size:60px;
 
 
 color:white;
 
 
-margin-top:50px;
+
+margin-top:40px;
 
 
 
 text-shadow:
 
 
-0 0 20px hotpink;
+0 0 20px #6d1b7b,
+
+0 0 40px #8b0000;
 
 
 
@@ -734,65 +860,54 @@ animation:latir 2s infinite;
 
 
 
-
-
 @keyframes latir{
 
 
 0%{
-
-
 transform:scale(1);
-
-
 }
-
 
 50%{
-
-
-transform:scale(1.08);
-
-
+transform:scale(1.05);
 }
-
 
 100%{
-
-
 transform:scale(1);
-
+}
 
 }
 
 
-}
 
 
-
-
-/* MENSAJE FINAL */
-
+/*================================*/
+/* ESCENA FINAL */
+/*================================*/
 
 
 #final{
 
 
-font-size:55px;
+font-size:65px;
+
 
 
 color:white;
 
 
 
+line-height:90px;
+
+
+
 text-shadow:
 
 
-0 0 15px hotpink,
+0 0 20px #6d1b7b,
 
-0 0 30px deeppink,
+0 0 40px #8b0000,
 
-0 0 60px hotpink;
+0 0 80px purple;
 
 
 
@@ -807,25 +922,15 @@ animation:brillo 2s infinite;
 
 
 0%{
-
-opacity:0.6;
-
+opacity:.6;
 }
-
 
 50%{
-
-
 opacity:1;
-
 }
-
 
 100%{
-
-
-opacity:0.6;
-
+opacity:.6;
 }
 
 
@@ -834,8 +939,10 @@ opacity:0.6;
 
 
 
+
+/*================================*/
 /* ESTRELLAS */
-
+/*================================*/
 
 
 .star{
@@ -859,28 +966,19 @@ z-index:2;
 }
 
 
-
 @keyframes parpadear{
 
 
 0%{
-
 opacity:.2;
-
 }
-
 
 50%{
-
 opacity:1;
-
 }
-
 
 100%{
-
 opacity:.2;
-
 }
 
 
@@ -890,8 +988,9 @@ opacity:.2;
 
 
 
+/*================================*/
 /* CORAZONES */
-
+/*================================*/
 
 
 .corazon{
@@ -912,8 +1011,6 @@ z-index:15;
 }
 
 
-
-
 @keyframes subir{
 
 
@@ -924,7 +1021,6 @@ transform:translateY(100vh);
 opacity:1;
 
 }
-
 
 
 100%{
@@ -938,4 +1034,3 @@ opacity:0;
 
 
 }
-
