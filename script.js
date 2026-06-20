@@ -2,11 +2,9 @@
 // ESCENA 1
 // =======================================
 
-const textoBase = `Oye...
+const textoBase = `Mi preciosa.
 
-Mi preciosa...
-
-Tengo algo importante que decirte...
+Tengo algo importante que decirte.
 
 Y espero que me regales unos minutitos de tu tiempo ❤️`;
 
