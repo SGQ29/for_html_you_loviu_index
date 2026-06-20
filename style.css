@@ -560,39 +560,31 @@ z-index:3;
 
 .letter{
 
-
 position:absolute;
 
-
 left:15px;
-
-
 bottom:10px;
 
-
 width:290px;
-
-
-height:190px;
-
+height:260px;
 
 background:white;
 
-
 padding:20px;
-
 
 box-sizing:border-box;
 
-
 border-radius:10px;
 
+overflow-y:auto;
+overflow-x:hidden;
 
 transition:1.2s;
 
-
 z-index:2;
 
+box-shadow:
+0 0 15px rgba(0,0,0,.2);
 
 }
 
@@ -611,12 +603,46 @@ line-height:30px;
 white-space:pre-line;
 
 
-color:black;
+color:#333;
+
+
+text-align:left;
+
+
+padding-right:5px;
+
+
+}
+.letter::-webkit-scrollbar{
+
+
+width:6px;
 
 
 }
 
 
+
+.letter::-webkit-scrollbar-thumb{
+
+
+background:pink;
+
+
+border-radius:10px;
+
+
+}
+
+
+
+.letter::-webkit-scrollbar-track{
+
+
+background:transparent;
+
+
+}
 
 
 .envelope.open .flap{
