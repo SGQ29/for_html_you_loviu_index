@@ -200,42 +200,39 @@ body {
 #no { background: #7a001f; color: white; }
 
 /*===========================*/
-/* DISEÑO DEL SOBRE Y CARTA (CORREGIDO) */
+/* SOBRE Y CARTA (DISEÑO FIEL AL IDEAL) */
 /*===========================*/
 .sobre-titulo {
     color: white;
-    font-family: 'Georgia', serif;
-    font-size: 32px;
+    font-size: 28px;
     font-weight: normal;
-    margin-bottom: 50px;
-    text-shadow: 0 0 15px rgba(230, 100, 150, 0.8);
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 .destaque-nombre {
-    font-size: 45px;
+    font-size: 48px;
     font-style: italic;
-    background: linear-gradient(to right, #ffccd5, #f3b0c3);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #ffffff;
+    text-shadow: 0 0 15px #ff4d7d, 0 0 30px #ff0044;
     display: inline-block;
-    margin-top: 10px;
-    filter: drop-shadow(0 0 10px rgba(139, 0, 0, 0.6));
+    margin-top: 5px;
 }
 
 .envelope-wrapper {
     position: relative;
-    width: 380px;
-    height: 260px;
-    margin: 40px auto 20px auto;
+    width: 360px;
+    height: 240px;
+    margin: 140px auto 20px auto; /* Empujado hacia abajo para dar espacio a la carta que sube */
 }
 
 .envelope {
     position: relative;
     width: 100%;
     height: 100%;
-    background: #50001c;
-    border-radius: 0 0 15px 15px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 30px rgba(95, 35, 128, 0.4);
+    background: #380012; /* Fondo interno del sobre oscuro */
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 40px rgba(214, 51, 132, 0.3);
 }
 
 /* Solapa Superior */
@@ -245,53 +242,52 @@ body {
     left: 0;
     width: 0;
     height: 0;
-    border-left: 190px solid transparent;
-    border-right: 190px solid transparent;
-    border-top: 140px solid #6b1d44;
+    border-left: 180px solid transparent;
+    border-right: 180px solid transparent;
+    border-top: 130px solid #5a0c2a;
     transform-origin: top;
     transition: transform 1s ease, z-index 1s ease;
     z-index: 5;
-    filter: drop-shadow(0 4px 5px rgba(0,0,0,0.4));
 }
 
-/* Cuerpo Delantero del Sobre */
+/* Bolsillo Inferior / Laterales del Sobre usando bordes CSS perfectos */
 .pocket {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #440015 0%, #2e000e 100%);
-    clip-path: polygon(0 35%, 50% 70%, 100% 35%, 100% 100%, 0% 100%);
+    width: 0;
+    height: 0;
+    border-left: 180px solid #4a0018;
+    border-right: 180px solid #4a0018;
+    border-top: 110px solid transparent;
+    border-bottom: 130px solid #4a0018;
+    border-radius: 0 0 12px 12px;
     z-index: 4;
-    border-radius: 0 0 15px 15px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Botón decorativo de corazón central en el sobre */
+/* Sello de Corazón en el centro inferior del sobre */
 .envelope::after {
     content: "❤️";
     position: absolute;
-    bottom: 12px;
+    bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 38px;
+    font-size: 40px;
     z-index: 6;
-    filter: drop-shadow(0 0 12px #ff1a53);
-    transition: .5s;
+    filter: drop-shadow(0 0 15px #ff1a53);
 }
 
-/* Hoja de la Carta Interna */
+/* Hoja de la Carta Estilizada */
 .letter {
     position: absolute;
-    left: 20px;
-    bottom: 15px;
-    width: 340px;
-    height: 240px;
-    background: #fff5f7;
-    padding: 12px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    left: 15px;
+    bottom: 10px;
+    width: 330px;
+    height: 220px;
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 15px 15px 8px 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     z-index: 2;
     transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
     box-sizing: border-box;
@@ -300,70 +296,67 @@ body {
 .letter-border {
     width: 100%;
     height: 100%;
-    border: 1px dashed #cca3b1;
-    border-radius: 8px;
+    border: 1px dashed #e0b0c0;
+    border-radius: 10px;
     padding: 15px 10px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow-y: auto;
-    overflow-x: hidden;
 }
 
 .letter-heart-top {
-    font-size: 16px;
-    margin-bottom: 5px;
     color: #ff3366;
+    font-size: 14px;
+    margin-bottom: 8px;
 }
 
 .letter-text {
-    font-size: 15px;
-    line-height: 26px;
-    color: #4a333a;
+    font-size: 16px;
+    line-height: 28px;
+    color: #3d2229;
     text-align: center;
     white-space: pre-line;
-    font-weight: 500;
+    font-weight: normal;
     width: 100%;
 }
 
-/* Modificadores de animación Apertura */
+/* Control de Estados de Animación al abrir */
 .envelope.open .flap {
     transform: rotateX(180deg);
-    z-index: 1;
+    z-index: 1; /* Pasa al fondo detrás de la carta */
 }
 
 .envelope.open .letter {
-    transform: translateY(-160px);
-    z-index: 3;
-    height: 300px; /* Crece dinámicamente al salir para contener el texto sin scrolls feos */
-    box-shadow: 0 -5px 25px rgba(255, 192, 203, 0.3), 0 10px 20px rgba(0,0,0,0.3);
+    transform: translateY(-160px); /* Se desliza limpiamente hacia arriba */
+    z-index: 3; /* Queda sobre el fondo pero contenido elegantemente */
+    height: 280px; /* Crece para albergar todo el texto sin romper el sobre */
+    box-shadow: 0 -5px 20px rgba(255, 100, 150, 0.2), 0 10px 20px rgba(0,0,0,0.4);
 }
 
-/* Detalles Estéticos debajo del Sobre */
+/* Elementos estéticos inferiores */
 .decoracion-inferior {
-    margin-top: 35px;
+    margin-top: 40px;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
 }
 
 .corazon-centro {
-    font-size: 20px;
-    color: #a155b9;
-    filter: drop-shadow(0 0 8px #a155b9);
+    font-size: 22px;
+    color: #ca79e6;
+    filter: drop-shadow(0 0 8px #ca79e6);
     z-index: 2;
-    background: transparent;
     padding: 0 10px;
 }
 
 .lineas-decorativas {
     position: absolute;
-    width: 180px;
+    width: 200px;
     height: 1px;
-    background: linear-gradient(to right, transparent, #5f2380, #a155b9, #5f2380, transparent);
+    background: linear-gradient(to right, transparent, #5f2380, #ca79e6, #5f2380, transparent);
     z-index: 1;
 }
 
