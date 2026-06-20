@@ -39,7 +39,7 @@ body {
 }
 
 .oculto {
-    display: none;
+    display: none !important;
 }
 
 @keyframes fade {
@@ -199,19 +199,19 @@ body {
 #si { background: #5f2380; color: white; }
 #no { background: #7a001f; color: white; }
 
-/*===========================*/
-/* SOBRE Y CARTA (DISEÑO FIEL AL IDEAL) */
-/*===========================*/
+/*==================================================*/
+/* SOBRE Y CARTA ESTILO PREMIUM (ANTI-SCROLLBARS) */
+/*==================================================*/
 .sobre-titulo {
     color: white;
-    font-size: 28px;
+    font-size: 26px;
     font-weight: normal;
-    margin-bottom: 20px;
+    margin: 0 auto 20px auto;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 .destaque-nombre {
-    font-size: 48px;
+    font-size: 46px;
     font-style: italic;
     color: #ffffff;
     text-shadow: 0 0 15px #ff4d7d, 0 0 30px #ff0044;
@@ -221,83 +221,86 @@ body {
 
 .envelope-wrapper {
     position: relative;
-    width: 360px;
-    height: 240px;
-    margin: 140px auto 20px auto; /* Empujado hacia abajo para dar espacio a la carta que sube */
+    width: 380px;
+    height: 260px;
+    margin: 150px auto 20px auto; /* Espacio superior para que la carta se eleve */
 }
 
 .envelope {
     position: relative;
     width: 100%;
     height: 100%;
-    background: #380012; /* Fondo interno del sobre oscuro */
+    background: #30000f; /* Fondo oscuro interno */
     border-radius: 0 0 12px 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 40px rgba(214, 51, 132, 0.3);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.7), 0 0 40px rgba(214, 51, 132, 0.25);
+    overflow: visible;
 }
 
-/* Solapa Superior */
+/* Solapa Superior - Triángulo dinámico puro sin elementos nativos */
 .flap {
     position: absolute;
     top: 0;
     left: 0;
     width: 0;
     height: 0;
-    border-left: 180px solid transparent;
-    border-right: 180px solid transparent;
-    border-top: 130px solid #5a0c2a;
+    border-left: 190px solid transparent;
+    border-right: 190px solid transparent;
+    border-top: 140px solid #5a0c2a;
     transform-origin: top;
-    transition: transform 1s ease, z-index 1s ease;
+    transition: transform 0.9s ease, z-index 0.9s ease;
     z-index: 5;
 }
 
-/* Bolsillo Inferior / Laterales del Sobre usando bordes CSS perfectos */
+/* Cuerpo frontal del sobre (Laterales e Inferior unidos herméticamente) */
 .pocket {
     position: absolute;
     top: 0;
     left: 0;
     width: 0;
     height: 0;
-    border-left: 180px solid #4a0018;
-    border-right: 180px solid #4a0018;
-    border-top: 110px solid transparent;
-    border-bottom: 130px solid #4a0018;
+    border-left: 190px solid #4a0018;
+    border-right: 190px solid #4a0018;
+    border-top: 120px solid transparent;
+    border-bottom: 140px solid #4a0018;
     border-radius: 0 0 12px 12px;
     z-index: 4;
 }
 
-/* Sello de Corazón en el centro inferior del sobre */
+/* Sello de Corazón */
 .envelope::after {
     content: "❤️";
     position: absolute;
-    bottom: 15px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 40px;
+    font-size: 42px;
     z-index: 6;
     filter: drop-shadow(0 0 15px #ff1a53);
 }
 
-/* Hoja de la Carta Estilizada */
+/* Tarjeta / Hoja de la Carta */
 .letter {
     position: absolute;
     left: 15px;
-    bottom: 10px;
-    width: 330px;
-    height: 220px;
+    bottom: 15px;
+    width: 350px;
+    height: 230px;
     background: #ffffff;
-    padding: 15px;
-    border-radius: 15px 15px 8px 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    border-radius: 15px 15px 10px 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.35);
     z-index: 2;
-    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), height 1.2s ease;
     box-sizing: border-box;
+    overflow: hidden; /* Evita fugas visuales absolutas */
+    padding: 12px;
 }
 
+/* Borde elegante interno */
 .letter-border {
     width: 100%;
     height: 100%;
-    border: 1px dashed #e0b0c0;
-    border-radius: 10px;
+    border: 1px dashed #e6afc2;
+    border-radius: 12px;
     padding: 15px 10px;
     box-sizing: border-box;
     display: flex;
@@ -306,14 +309,23 @@ body {
     overflow-y: auto;
 }
 
+/* Forzar la eliminación total de barras de scroll en todos los navegadores */
+.letter-border::-webkit-scrollbar {
+    display: none;
+}
+.letter-border {
+    -ms-overflow-style: none;  /* IE y Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
 .letter-heart-top {
     color: #ff3366;
-    font-size: 14px;
-    margin-bottom: 8px;
+    font-size: 15px;
+    margin-bottom: 5px;
 }
 
 .letter-text {
-    font-size: 16px;
+    font-size: 16.5px;
     line-height: 28px;
     color: #3d2229;
     text-align: center;
@@ -322,22 +334,22 @@ body {
     width: 100%;
 }
 
-/* Control de Estados de Animación al abrir */
+/* ESTADOS ACTIVOS (ANIMACIONES) */
 .envelope.open .flap {
     transform: rotateX(180deg);
-    z-index: 1; /* Pasa al fondo detrás de la carta */
+    z-index: 1;
 }
 
 .envelope.open .letter {
-    transform: translateY(-160px); /* Se desliza limpiamente hacia arriba */
-    z-index: 3; /* Queda sobre el fondo pero contenido elegantemente */
-    height: 280px; /* Crece para albergar todo el texto sin romper el sobre */
-    box-shadow: 0 -5px 20px rgba(255, 100, 150, 0.2), 0 10px 20px rgba(0,0,0,0.4);
+    transform: translateY(-170px); /* Eleva de forma fluida */
+    z-index: 3;
+    height: 300px; /* Crece para alojar todo el poema perfectamente */
+    box-shadow: 0 -10px 25px rgba(255, 77, 125, 0.25), 0 15px 25px rgba(0,0,0,0.4);
 }
 
-/* Elementos estéticos inferiores */
+/* Elementos de Adorno Inferiores */
 .decoracion-inferior {
-    margin-top: 40px;
+    margin-top: 50px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -345,16 +357,16 @@ body {
 }
 
 .corazon-centro {
-    font-size: 22px;
+    font-size: 24px;
     color: #ca79e6;
-    filter: drop-shadow(0 0 8px #ca79e6);
+    filter: drop-shadow(0 0 10px #ca79e6);
     z-index: 2;
-    padding: 0 10px;
+    padding: 0 12px;
 }
 
 .lineas-decorativas {
     position: absolute;
-    width: 200px;
+    width: 240px;
     height: 1px;
     background: linear-gradient(to right, transparent, #5f2380, #ca79e6, #5f2380, transparent);
     z-index: 1;
