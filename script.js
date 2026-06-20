@@ -1,8 +1,8 @@
-//=================================================
-// ESCENA 1
-//=================================================
+//================================================
+// MENSAJE INICIAL
+//================================================
 
-const mensaje=`
+const mensaje = `
 
 Mi preciosa.
 
@@ -12,23 +12,22 @@ Y espero que me regales unos minutitos de tu tiempo ❤️
 
 `;
 
-let i=0;
-let textoAcumulado="";
+let i = 0;
+let texto = "";
 
-function escribir(){
+function escribir() {
 
-if(i<mensaje.length){
+    if (i < mensaje.length) {
 
-textoAcumulado+=mensaje.charAt(i);
+        texto += mensaje.charAt(i);
 
-document.getElementById("texto").innerHTML=
-textoAcumulado.replace(/\n/g,"<br>");
+        document.getElementById("texto").innerHTML =
+            texto.replace(/\n/g, "<br>");
 
-i++;
+        i++;
 
-setTimeout(escribir,55);
-
-}
+        setTimeout(escribir, 50);
+    }
 
 }
 
@@ -36,29 +35,30 @@ escribir();
 
 
 
-//=================================================
+
+//================================================
 // ESTRELLAS
-//=================================================
+//================================================
 
-function estrellas(){
+function estrellas() {
 
-const fondo=document.getElementById("stars");
+    const fondo = document.getElementById("stars");
 
-for(let i=0;i<120;i++){
+    for(let i=0;i<120;i++){
 
-let e=document.createElement("div");
+        let s=document.createElement("div");
 
-e.className="star";
+        s.className="star";
 
-e.style.width="2px";
-e.style.height="2px";
+        s.style.left=Math.random()*100+"vw";
+        s.style.top=Math.random()*100+"vh";
 
-e.style.left=Math.random()*100+"vw";
-e.style.top=Math.random()*100+"vh";
+        s.style.width="2px";
+        s.style.height="2px";
 
-fondo.appendChild(e);
+        fondo.appendChild(s);
 
-}
+    }
 
 }
 
@@ -66,9 +66,10 @@ estrellas();
 
 
 
-//=================================================
+
+//================================================
 // CORAZONES
-//=================================================
+//================================================
 
 function corazones(){
 
@@ -90,34 +91,34 @@ c.remove();
 
 }
 
-setInterval(corazones,700);
+setInterval(corazones,1500);
 
 
 
 
-//=================================================
+//================================================
 // CAMBIO ESCENAS
-//=================================================
+//================================================
 
-function cambiarEscena(actual,siguiente){
+function cambiarEscena(a,b){
 
-document.getElementById(actual)
+document.getElementById(a)
 .classList.add("oculto");
 
-document.getElementById(siguiente)
+
+document.getElementById(b)
 .classList.remove("oculto");
 
 }
 
 
 
-//=================================================
+
+//================================================
 // ESCENA 1
-//=================================================
+//================================================
 
-document.getElementById("boton1").onclick=()=>{
-
-let musica=document.getElementById("musica");
+boton1.onclick=()=>{
 
 musica.play();
 
@@ -131,11 +132,11 @@ cambiarEscena(
 
 
 
-//=================================================
+//================================================
 // ESCENA 2
-//=================================================
+//================================================
 
-document.getElementById("boton2").onclick=()=>{
+boton2.onclick=()=>{
 
 cambiarEscena(
 "escena2",
@@ -147,46 +148,54 @@ cambiarEscena(
 
 
 
-//=================================================
+//================================================
 // TARJETAS
-//=================================================
+//================================================
 
-let contador=0;
+let abiertas=0;
+
 
 function revelarTarjeta(t){
+
 
 if(t.classList.contains("revelada"))
 return;
 
+
 t.classList.add("revelada");
 
-contador++;
+abiertas++;
 
-if(contador==3){
+
+if(abiertas==3){
 
 setTimeout(()=>{
 
-document.getElementById("boton3")
-.classList.remove("oculto");
+boton3.classList.remove("oculto");
 
 },700);
 
 }
 
+
 }
 
 
 
 
-//=================================================
+//================================================
 // ESCENA 3
-//=================================================
+//================================================
 
-document.getElementById("boton3").onclick=()=>{
+
+boton3.onclick=()=>{
 
 cambiarEscena(
+
 "escena3",
+
 "escena4"
+
 );
 
 };
@@ -194,31 +203,43 @@ cambiarEscena(
 
 
 
-//=================================================
+//================================================
 // BOTON NO
-//=================================================
+//================================================
 
 const no=document.getElementById("no");
 
+
 function mover(){
 
+
 let x=Math.random()*
+
 (window.innerWidth-180);
 
+
 let y=Math.random()*
+
 (window.innerHeight-100);
+
+
 
 no.style.position="fixed";
 
 no.style.left=x+"px";
 no.style.top=y+"px";
 
+
 }
+
 
 no.addEventListener(
 "mouseover",
 mover
 );
+
+
+
 
 no.addEventListener(
 "touchstart",
@@ -228,9 +249,10 @@ mover
 
 
 
-//=================================================
+//================================================
 // CARTA
-//=================================================
+//================================================
+
 
 const carta=`
 
@@ -254,6 +276,7 @@ Eres mi lugar seguro.
 La persona con quien más tranquilidad siento.
 
 
+
 Gracias por existir.
 
 
@@ -267,7 +290,7 @@ Gracias por ser tú.
 
 
 
-Con amor,
+Con muchísimo cariño,
 
 
 Polar ❤️
@@ -276,7 +299,9 @@ Polar ❤️
 `;
 
 
+
 let p=0;
+
 
 
 function escribirCarta(){
@@ -285,8 +310,7 @@ function escribirCarta(){
 if(p<carta.length){
 
 
-document.getElementById("textoCarta")
-.innerHTML+=carta.charAt(p);
+textoCarta.innerHTML+=carta.charAt(p);
 
 
 p++;
@@ -296,23 +320,26 @@ setTimeout(
 
 escribirCarta,
 
-45
+40
 
 );
 
 
 }
 
+
 }
 
 
 
 
-//=================================================
-// ESCENA 4
-//=================================================
 
-document.getElementById("si").onclick=()=>{
+//================================================
+// ESCENA 4
+//================================================
+
+
+si.onclick=()=>{
 
 
 cambiarEscena(
@@ -322,6 +349,7 @@ cambiarEscena(
 "escena5"
 
 );
+
 
 
 
@@ -344,20 +372,18 @@ escribirCarta();
 setTimeout(()=>{
 
 
-document.getElementById("boton5")
-
-.classList.remove("oculto");
+boton5.classList.remove("oculto");
 
 
-},5000);
+},4500);
 
 
 
-},1500);
+},1200);
 
 
 
-},1000);
+},800);
 
 
 };
@@ -365,11 +391,12 @@ document.getElementById("boton5")
 
 
 
-//=================================================
+//================================================
 // ESCENA 5
-//=================================================
+//================================================
 
-document.getElementById("boton5").onclick=()=>{
+
+boton5.onclick=()=>{
 
 
 cambiarEscena(
@@ -386,9 +413,11 @@ cambiarEscena(
 
 
 
-//=================================================
+
+//================================================
 // GALERIA
-//=================================================
+//================================================
+
 
 const fotos=[
 
@@ -415,15 +444,26 @@ const fotos=[
 ];
 
 
+
 let indice=0;
+
 
 
 function cambiarFoto(){
 
 
-document.getElementById("galeriaFoto")
+galeriaFoto.style.opacity=0;
 
-.src=fotos[indice];
+
+
+setTimeout(()=>{
+
+
+galeriaFoto.src=fotos[indice];
+
+
+galeriaFoto.style.opacity=1;
+
 
 
 indice++;
@@ -436,7 +476,14 @@ indice=0;
 }
 
 
+
+},500);
+
+
+
 }
+
+
 
 setInterval(
 
@@ -449,11 +496,12 @@ cambiarFoto,
 
 
 
-//=================================================
+//================================================
 // ESCENA 6
-//=================================================
+//================================================
 
-document.getElementById("boton6").onclick=()=>{
+
+boton6.onclick=()=>{
 
 
 cambiarEscena(
@@ -468,62 +516,67 @@ cambiarEscena(
 iniciarContador();
 
 
+
 };
 
 
 
 
-//=================================================
+
+//================================================
 // CONTADOR
-//=================================================
+//================================================
+
 
 function iniciarContador(){
 
 
-let dias=365;
 
-const contador=
-document.getElementById("contador");
+let dias=128;
 
 
-let intervalo=setInterval(()=>{
+const cont=document.getElementById("contador");
+
+
+
+let inter=setInterval(()=>{
 
 
 dias--;
 
 
-contador.innerHTML=
+cont.innerHTML=dias;
 
-dias+" días";
 
 
 if(dias<=0){
 
 
-clearInterval(intervalo);
+clearInterval(inter);
 
 
-contador.innerHTML=
-
-"Hoy la veo ❤️";
-
-
-}
-
-
-},50);
+cont.innerHTML="❤️";
 
 
 }
 
 
 
+},70);
 
-//=================================================
+
+
+}
+
+
+
+
+//================================================
 // ESCENA 7
-//=================================================
+//================================================
 
-document.getElementById("boton7").onclick=()=>{
+
+boton7.onclick=()=>{
 
 
 cambiarEscena(
@@ -535,16 +588,101 @@ cambiarEscena(
 );
 
 
+
+escribirMensaje();
+
+
 };
 
 
 
 
-//=================================================
+//================================================
 // ESCENA 8
-//=================================================
+//================================================
 
-document.getElementById("boton8").onclick=()=>{
+
+const mensajeFinal=`
+
+
+Eres mi niña.
+
+
+Mi preciosa.
+
+
+Mi corazón bonito.
+
+
+Mi lugar seguro.
+
+
+
+Gracias por cada sonrisa.
+
+
+Gracias por existir.
+
+
+
+Con muchísimo cariño.
+
+
+
+Polar ❤️
+
+
+`;
+
+
+
+let mf=0;
+
+
+
+function escribirMensaje(){
+
+
+
+if(mf<mensajeFinal.length){
+
+
+
+mensajeFinalElemento.innerHTML+=
+
+mensajeFinal.charAt(mf);
+
+
+
+mf++;
+
+
+
+setTimeout(
+
+
+escribirMensaje,
+
+
+45
+
+
+);
+
+
+}
+
+
+}
+
+
+const mensajeFinalElemento=
+document.getElementById("mensajeFinal");
+
+
+
+
+boton8.onclick=()=>{
 
 
 cambiarEscena(
@@ -561,16 +699,19 @@ cambiarEscena(
 
 
 
-//=================================================
+//================================================
 // ESCENA 9
-//=================================================
+//================================================
+
 
 document.getElementById("final").innerHTML=`
 
 Te quiero muchísimo
+
 
 <br><br>
 
 Jacqueline ❤️
 
 `;
+
