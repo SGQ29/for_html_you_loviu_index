@@ -1,82 +1,479 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Jacqueline ❤️</title>
-    <link rel="stylesheet" href="style.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Jacqueline ❤️</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
+
+
 <body>
 
-    <div class="overlay"></div>
-    <div id="stars"></div>
 
-    <div class="container" id="escena1">
-        <img id="fotoPrincipal" src="amor.jpg" alt="Amor">
-        <h1 id="texto"></h1>
-        <button id="boton1" class="btn-principal">✨ Haz click aquí, preciosa ✨</button>
-    </div>
+<div class="overlay"></div>
 
-    <div class="container oculto" id="escena2">
-        <h1 class="titulo-escena">Desde que llegaste a mi vida...</h1>
-        <p class="texto-intermedio">Cada segundo a tu lado ha sido perfecto. Has llenado mis días de colores y me has enseñado lo bonito que es querer de verdad.</p>
-        <button id="boton2" class="btn-principal">Continuar ❤️</button>
-    </div>
+<div id="stars"></div>
 
-    <div class="container oculto" id="escena3">
-        <h1 class="titulo-escena">Tres cosas que me vuelven loco de ti...</h1>
-        <p class="subtitulo-escena">(Haz click en cada una para descubrirlas)</p>
-        <div class="tarjetas-container">
-            <div class="tarjeta" onclick="revelarTarjeta(this)">
-                <div class="tarjeta-interior">
-                    <div class="tarjeta-frente">✨ Tu sonrisa</div>
-                    <div class="tarjeta-atras">Es mi luz diaria. Capaz de desarmarme y hacerme feliz en un segundo.</div>
-                </div>
-            </div>
-            <div class="tarjeta" onclick="revelarTarjeta(this)">
-                <div class="tarjeta-interior">
-                    <div class="tarjeta-frente">👀 Tus ojitos</div>
-                    <div class="tarjeta-atras">Tienen un brillo único en el universo. Podría mirarte toda la eternidad.</div>
-                </div>
-            </div>
-            <div class="tarjeta" onclick="revelarTarjeta(this)">
-                <div class="tarjeta-interior">
-                    <div class="tarjeta-frente">🧠 Tu esencia</div>
-                    <div class="tarjeta-atras">Tu ternura, tu forma de cuidarme y lo increíblemente hermosa que eres por dentro.</div>
-                </div>
-            </div>
-        </div>
-        <button id="boton3" class="btn-principal oculto">Ver algo más... 👀</button>
-    </div>
 
-    <div class="container oculto" id="escena4">
-        <h1 class="pregunta">
-            Jacqueline...<br><br>
-            Déjame preguntarte algo...<br><br>
-            ¿Quién es la chica más hermosa del universo?
-        </h1>
-        <div class="botones-container">
-            <button id="si">😊 Yo</button>
-            <button id="no">🤔 Otra persona</button>
-        </div>
-    </div>
 
-    <div class="container oculto" id="escena5">
-        <div class="envelope-wrapper">
-            <div class="envelope">
-                <div class="flap"></div>
-                <div class="pocket"></div>
-                <div class="letter">
-                    <div class="letter-text" id="textoCarta"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- ESCENA 1 -->
 
-    <audio id="musica" loop>
-        <source src="musica.mp3" type="audio/mpeg">
-    </audio>
+<div class="container" id="escena1">
 
-    <script src="script.js"></script>
+<img id="fotoPrincipal" src="amor.jpg">
+
+
+<h1 id="texto"></h1>
+
+
+<button id="boton1" class="btn-principal">
+
+✨ Haz click aquí, preciosa ✨
+
+</button>
+
+</div>
+
+
+
+
+<!-- ESCENA 2 -->
+
+
+<div class="container oculto" id="escena2">
+
+<h1 class="titulo-escena">
+
+Desde que llegaste a mi vida...
+
+</h1>
+
+
+<p class="texto-intermedio">
+
+Cada segundo contigo ha sido especial.
+
+Has llenado mis días de tranquilidad,
+
+sonrisas y momentos bonitos.
+
+</p>
+
+
+<button id="boton2" class="btn-principal">
+
+Continuar ❤️
+
+</button>
+
+</div>
+
+
+
+
+
+<!-- ESCENA 3 -->
+
+
+<div class="container oculto" id="escena3">
+
+<h1 class="titulo-escena">
+
+Tres cosas que me vuelven loco de ti
+
+</h1>
+
+
+<p class="subtitulo-escena">
+
+(Haz click en cada tarjeta)
+
+</p>
+
+
+
+<div class="tarjetas-container">
+
+
+
+<div class="tarjeta"
+onclick="revelarTarjeta(this)">
+
+<div class="tarjeta-interior">
+
+<div class="tarjeta-frente">
+
+✨ Tu sonrisa
+
+</div>
+
+<div class="tarjeta-atras">
+
+Es capaz de alegrarme el día completo.
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="tarjeta"
+onclick="revelarTarjeta(this)">
+
+<div class="tarjeta-interior">
+
+<div class="tarjeta-frente">
+
+👀 Tus ojitos
+
+</div>
+
+<div class="tarjeta-atras">
+
+Podría perderme eternamente en ellos.
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+<div class="tarjeta"
+onclick="revelarTarjeta(this)">
+
+<div class="tarjeta-interior">
+
+<div class="tarjeta-frente">
+
+❤️ Tu esencia
+
+</div>
+
+<div class="tarjeta-atras">
+
+Tu ternura hace que me sienta en casa.
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+<button id="boton3"
+class="btn-principal oculto">
+
+Ver algo más 👀
+
+</button>
+
+</div>
+
+
+
+
+
+<!-- ESCENA 4 -->
+
+<div class="container oculto"
+id="escena4">
+
+
+
+<h1 class="pregunta">
+
+Jacqueline...
+
+<br><br>
+
+¿Quién es la chica más hermosa
+del universo?
+
+</h1>
+
+
+
+<div class="botones-container">
+
+
+<button id="si">
+
+😊 Yo
+
+</button>
+
+
+
+<button id="no">
+
+🤔 Otra persona
+
+</button>
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+<!-- ESCENA 5 -->
+
+<div class="container oculto"
+id="escena5">
+
+
+<div class="envelope-wrapper">
+
+
+<div class="envelope">
+
+<div class="flap"></div>
+
+<div class="pocket"></div>
+
+
+
+<div class="letter">
+
+<div class="letter-text"
+
+id="textoCarta">
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<button id="boton5"
+
+class="btn-principal oculto">
+
+Ver nuestros recuerdos 📷
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+<!-- ESCENA 6 -->
+
+
+<div class="container oculto"
+
+id="escena6">
+
+
+<h1 class="titulo-escena">
+
+Nuestros recuerdos ❤️
+
+</h1>
+
+
+<img id="galeriaFoto"
+
+src="amor.jpg">
+
+
+
+<button id="boton6"
+
+class="btn-principal">
+
+Continuar ✨
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+<!-- ESCENA 7 -->
+
+
+<div class="container oculto"
+
+id="escena7">
+
+
+
+<h1 class="titulo-escena">
+
+Deseando volver a verte...
+
+</h1>
+
+
+
+<div id="contador">
+
+00 días
+
+</div>
+
+
+
+
+<button id="boton7"
+
+class="btn-principal">
+
+Seguir ❤️
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+<!-- ESCENA 8 -->
+
+
+<div class="container oculto"
+
+id="escena8">
+
+
+
+<h1 class="titulo-escena">
+
+Jacqueline...
+
+</h1>
+
+
+
+<p class="texto-intermedio">
+
+
+Eres mi niña.
+
+
+Mi preciosa.
+
+
+Mi corazón bonito.
+
+
+Mi lugar seguro.
+
+
+
+<br><br>
+
+Con amor,
+
+
+<br>
+
+
+Polar ❤️
+
+
+
+</p>
+
+
+
+<button id="boton8"
+
+class="btn-principal">
+
+Una última sorpresa 🌌
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+<!-- ESCENA 9 -->
+
+
+<div class="container oculto"
+
+id="escena9">
+
+
+
+<h1 id="final">
+
+Te amo muchísimo
+
+
+<br>
+
+
+Jacqueline ❤️
+
+
+</h1>
+
+
+</div>
+
+
+
+
+
+<audio id="musica" loop>
+
+<source src="musica.mp3">
+
+</audio>
+
+
+
+
+<script src="script.js"></script>
+
 </body>
+
 </html>
