@@ -1,30 +1,46 @@
-// =======================================
-// ESCENA 1
-// =======================================
 
-const textoBase = `Mi preciosa.
+//=====================================
+// ESCENA 1
+//=====================================
+
+
+const mensaje=`
+
+Mi preciosa.
 
 Tengo algo importante que decirte.
 
-Y espero que me regales unos minutitos de tu tiempo ❤️`;
+Y espero que me regales unos minutitos de tu tiempo ❤️
 
-let indiceTexto=0;
-let acumulado="";
+`;
+
+
+
+let i=0;
+let textoAcumulado="";
+
 
 function escribir(){
 
-if(indiceTexto<textoBase.length){
 
-acumulado+=textoBase.charAt(indiceTexto);
+if(i<mensaje.length){
+
+
+textoAcumulado+=mensaje.charAt(i);
+
 
 document.getElementById("texto").innerHTML=
-acumulado.replace(/\n/g,"<br>");
+textoAcumulado.replace(/\n/g,"<br>");
 
-indiceTexto++;
+
+
+i++;
 
 setTimeout(escribir,55);
 
+
 }
+
 
 }
 
@@ -33,10 +49,10 @@ escribir();
 
 
 
-
-//======================================
+//=====================================
 // ESTRELLAS
-//======================================
+//=====================================
+
 
 
 function estrellas(){
@@ -45,7 +61,8 @@ function estrellas(){
 const fondo=document.getElementById("stars");
 
 
-for(let i=0;i<100;i++){
+
+for(let i=0;i<120;i++){
 
 
 let e=document.createElement("div");
@@ -66,23 +83,28 @@ e.style.top=Math.random()*100+"vh";
 
 fondo.appendChild(e);
 
+
 }
 
 
+
 }
+
 
 estrellas();
 
 
 
 
-//======================================
+
+//=====================================
 // CORAZONES
-//======================================
+//=====================================
 
 
 
 function corazones(){
+
 
 
 let c=document.createElement("div");
@@ -92,6 +114,7 @@ c.className="corazon";
 
 
 c.innerHTML="❤️";
+
 
 
 c.style.left=Math.random()*95+"vw";
@@ -120,18 +143,27 @@ setInterval(corazones,700);
 
 
 
-//======================================
-// CAMBIO DE ESCENAS
-//======================================
+
+
+//=====================================
+// CAMBIAR ESCENAS
+//=====================================
+
 
 
 function cambiarEscena(actual,siguiente){
 
 
-document.getElementById(actual).classList.add("oculto");
+document.getElementById(actual)
+
+.classList.add("oculto");
 
 
-document.getElementById(siguiente).classList.remove("oculto");
+
+document.getElementById(siguiente)
+
+.classList.remove("oculto");
+
 
 
 }
@@ -140,9 +172,11 @@ document.getElementById(siguiente).classList.remove("oculto");
 
 
 
-//======================================
+
+//=====================================
 // ESCENA 1
-//======================================
+//=====================================
+
 
 
 document.getElementById("boton1").onclick=()=>{
@@ -155,7 +189,14 @@ musica.play();
 
 
 
-cambiarEscena("escena1","escena2");
+cambiarEscena(
+
+"escena1",
+
+"escena2"
+
+);
+
 
 
 };
@@ -163,16 +204,25 @@ cambiarEscena("escena1","escena2");
 
 
 
-//======================================
+
+
+//=====================================
 // ESCENA 2
-//======================================
+//=====================================
 
 
 
 document.getElementById("boton2").onclick=()=>{
 
 
-cambiarEscena("escena2","escena3");
+cambiarEscena(
+
+"escena2",
+
+"escena3"
+
+);
+
 
 
 };
@@ -181,9 +231,11 @@ cambiarEscena("escena2","escena3");
 
 
 
-//======================================
+
+
+//=====================================
 // TARJETAS
-//======================================
+//=====================================
 
 
 
@@ -223,10 +275,7 @@ document.getElementById("boton3")
 .classList.remove("oculto");
 
 
-},700);
-
-
-}
+},800);
 
 
 
@@ -234,17 +283,31 @@ document.getElementById("boton3")
 
 
 
+}
 
 
-//======================================
+
+
+
+
+
+//=====================================
 // ESCENA 3
-//======================================
+//=====================================
+
 
 
 document.getElementById("boton3").onclick=()=>{
 
 
-cambiarEscena("escena3","escena4");
+cambiarEscena(
+
+"escena3",
+
+"escena4"
+
+);
+
 
 
 };
@@ -253,9 +316,10 @@ cambiarEscena("escena3","escena4");
 
 
 
-//======================================
+
+//=====================================
 // BOTON NO
-//======================================
+//=====================================
 
 
 
@@ -268,18 +332,25 @@ function mover(){
 
 
 
-let x=Math.random()*(window.innerWidth-150);
+let x=Math.random()*
+
+(window.innerWidth-150);
 
 
 
-let y=Math.random()*(window.innerHeight-80);
+let y=Math.random()*
+
+(window.innerHeight-80);
+
 
 
 
 no.style.position="fixed";
 
 
+
 no.style.left=x+"px";
+
 
 
 no.style.top=y+"px";
@@ -290,20 +361,32 @@ no.style.top=y+"px";
 
 
 
-no.addEventListener("mouseover",mover);
+no.addEventListener(
+
+"mouseover",
+
+mover
+
+);
 
 
 
-no.addEventListener("touchstart",mover);
+no.addEventListener(
+
+"touchstart",
+
+mover
+
+);
 
 
 
 
 
-//======================================
+
+//=====================================
 // CARTA
-//======================================
-
+//=====================================
 
 
 
@@ -313,13 +396,10 @@ const carta=`
 Jacqueline...
 
 
-
 Mi niña...
 
 
-
 Mi preciosa...
-
 
 
 Mi corazón bonito...
@@ -351,12 +431,11 @@ Gracias por ser tú.
 
 
 
-
 Con amor,
 
 
-
 Polar ❤️
+
 
 
 `;
@@ -366,7 +445,6 @@ Polar ❤️
 
 
 let p=0;
-
 
 
 
@@ -388,8 +466,17 @@ p++;
 
 
 
+setTimeout(
 
-setTimeout(escribirCarta,45);
+escribirCarta,
+
+45
+
+);
+
+
+
+}
 
 
 
@@ -398,34 +485,34 @@ setTimeout(escribirCarta,45);
 
 
 
-}
 
 
 
-
-
-//======================================
-// ESCENA 5
-//======================================
-
+//=====================================
+// ESCENA 4
+//=====================================
 
 
 
 document.getElementById("si").onclick=()=>{
 
 
-cambiarEscena("escena4","escena5");
+cambiarEscena(
+
+"escena4",
+
+"escena5"
+
+);
 
 
 
 setTimeout(()=>{
 
 
-let sobre=document.querySelector(".envelope");
+document.querySelector(".envelope")
 
-
-
-sobre.classList.add("open");
+.classList.add("open");
 
 
 
@@ -433,6 +520,19 @@ setTimeout(()=>{
 
 
 escribirCarta();
+
+
+
+setTimeout(()=>{
+
+
+document.getElementById("boton5")
+
+.classList.remove("oculto");
+
+
+},5000);
+
 
 
 },1500);
@@ -446,3 +546,254 @@ escribirCarta();
 };
 
 
+
+
+
+
+//=====================================
+// ESCENA 5
+//=====================================
+
+
+
+document.getElementById("boton5").onclick=()=>{
+
+
+cambiarEscena(
+
+"escena5",
+
+"escena6"
+
+);
+
+
+
+};
+
+
+
+
+
+
+//=====================================
+// GALERIA
+//=====================================
+
+
+
+const fotos=[
+
+
+"amor.jpg",
+
+"feli.jpg",
+
+"felij.jpg",
+
+"familia.jpg",
+
+"nojada.jpg",
+
+"Ojos.jpg",
+
+"Diosa.jpg",
+
+"divina.jpg",
+
+"bonita.jpg",
+
+"cariño.jpg"
+
+
+
+];
+
+
+
+
+let indice=0;
+
+
+
+function cambiarFoto(){
+
+
+document.getElementById("galeriaFoto")
+
+.src=fotos[indice];
+
+
+
+indice++;
+
+
+
+if(indice>=fotos.length){
+
+indice=0;
+
+}
+
+
+
+}
+
+
+
+setInterval(
+
+cambiarFoto,
+
+3000
+
+);
+
+
+
+
+
+
+//=====================================
+// ESCENA 6
+//=====================================
+
+
+
+document.getElementById("boton6").onclick=()=>{
+
+
+cambiarEscena(
+
+"escena6",
+
+"escena7"
+
+);
+
+
+
+iniciarContador();
+
+
+
+};
+
+
+
+
+
+
+//=====================================
+// CONTADOR
+//=====================================
+
+
+
+function iniciarContador(){
+
+
+
+let dias=365;
+
+
+
+const contador=
+
+
+document.getElementById("contador");
+
+
+
+let intervalo=
+
+
+setInterval(()=>{
+
+
+dias--;
+
+
+
+contador.innerHTML=
+
+
+dias+" días";
+
+
+
+
+if(dias<=0){
+
+
+clearInterval(intervalo);
+
+
+contador.innerHTML=
+
+
+"Hoy la veo ❤️";
+
+
+}
+
+
+
+},50);
+
+
+
+}
+
+
+
+
+
+
+
+//=====================================
+// ESCENA 7
+//=====================================
+
+
+
+document.getElementById("boton7").onclick=()=>{
+
+
+cambiarEscena(
+
+"escena7",
+
+"escena8"
+
+);
+
+
+
+};
+
+
+
+
+
+
+//=====================================
+// ESCENA 8
+//=====================================
+
+
+
+document.getElementById("boton8").onclick=()=>{
+
+
+cambiarEscena(
+
+"escena8",
+
+"escena9"
+
+);
+
+
+
+};
