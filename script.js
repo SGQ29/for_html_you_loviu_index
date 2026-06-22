@@ -1,5 +1,5 @@
 //================================================
-// MENSAJE INICIAL
+// MENSAJE INICIAL (Máquina de escribir controlada)
 //================================================
 
 const mensaje = `
@@ -10,61 +10,78 @@ Y espero que me regales unos minutitos de tu tiempo ❤️
 
 let i = 0;
 let texto = "";
+let ejecutorEscritura; // Variable para pausar el hilo si avanza de escena
 
 function escribir() {
     if (i < mensaje.length) {
         texto += mensaje.charAt(i);
-        document.getElementById("texto").innerHTML = texto.replace(/\n/g, "<br>");
+        const elementoTexto = document.getElementById("texto");
+        if (elementoTexto) {
+            elementoTexto.innerHTML = texto.replace(/\n/g, "<br>");
+        }
         i++;
-        setTimeout(escribir, 50);
+        ejecutorEscritura = setTimeout(escribir, 50);
     }
 }
 
 escribir();
 
 //================================================
-// ESTRELLAS
+// ESTRELLAS (Optimizado el renderizado)
 //================================================
 
 function estrellas() {
     const fondo = document.getElementById("stars");
-    for(let i=0; i<120; i++){
+    if (!fondo) return;
+    const fragmento = document.createDocumentFragment(); // Evita saturar el DOM
+    for(let i=0; i<80; i++){ // Bajado a 80 para mejor rendimiento en móviles
         let s = document.createElement("div");
         s.className = "star";
         s.style.left = Math.random()*100+"vw";
         s.style.top = Math.random()*100+"vh";
         s.style.width = "2px";
         s.style.height = "2px";
-        fondo.appendChild(s);
+        fragmento.appendChild(s);
     }
+    fondo.appendChild(fragmento);
 }
 
 estrellas();
 
 //================================================
-// CORAZONES
+// CORAZONES (Animación limpia sin congelamientos)
 //================================================
 
 function corazones(){
+    // Si la pestaña no está activa, no creamos corazones para no saturar memoria
+    if (document.hidden) return; 
+
     let c = document.createElement("div");
     c.className = "corazon";
     c.innerHTML = "❤️";
-    c.style.left = Math.random()*95+"vw";
+    c.style.left = Math.random()*90+"vw";
     document.body.appendChild(c);
+    
+    // Eliminación absoluta del elemento del DOM
     setTimeout(() => {
-        c.remove();
-    }, 5000);
+        if(c && c.parentNode) {
+            c.remove();
+        }
+    }, 4500);
 }
 
-setInterval(corazones, 1500);
+// Intervalo controlado
+let intervaloCorazones = setInterval(corazones, 2000);
 
 //================================================
 // CAMBIO ESCENAS
 //================================================
 
 function cambiarEscena(a, b){
-    document.getElementById(a).classList.add("oculto");
-    document.getElementById(b).classList.remove("oculto");
+    const escenaA = document.getElementById(a);
+    const escenaB = document.getElementById(b);
+    if(escenaA) escenaA.classList.add("oculto");
+    if(escenaB) escenaB.classList.remove("oculto");
 }
 
 //================================================
@@ -75,7 +92,10 @@ const boton1 = document.getElementById("boton1");
 const musica = document.getElementById("musica");
 
 boton1.onclick = () => {
-    musica.play();
+    clearTimeout(ejecutorEscritura); // Frena el proceso de la primera máquina de escribir
+    if(musica) {
+        musica.play().catch(e => console.log("Audio esperando interacción"));
+    }
     cambiarEscena("escena1", "escena2");
 };
 
@@ -100,9 +120,9 @@ function revelarTarjeta(t){
     t.classList.add("revelada");
     abiertas++;
 
-    if(abiertas == 3){
+    if(abiertas === 3){
         setTimeout(() => {
-            boton3.classList.remove("oculto");
+            if(boton3) boton3.classList.remove("oculto");
         }, 700);
     }
 }
@@ -111,9 +131,11 @@ function revelarTarjeta(t){
 // ESCENA 3
 //================================================
 
-boton3.onclick = () => {
-    cambiarEscena("escena3", "escena4");
-};
+if(boton3) {
+    boton3.onclick = () => {
+        cambiarEscena("escena3", "escena4");
+    };
+}
 
 //================================================
 // BOTON NO
@@ -130,11 +152,13 @@ function mover(){
     no.style.top = y + "px";
 }
 
-no.addEventListener("mouseover", mover);
-no.addEventListener("touchstart", mover);
+if(no) {
+    no.addEventListener("mouseover", mover);
+    no.addEventListener("touchstart", mover, {passive: true});
+}
 
 //================================================
-// CARTA (Usa texto plano, el salto de línea lo maneja el CSS con white-space)
+// CARTA (Efecto controlado)
 //================================================
 
 const carta = `
@@ -156,7 +180,7 @@ const textoCarta = document.getElementById("textoCarta");
 
 function escribirCarta(){
     if(p < carta.length){
-        textoCarta.textContent += carta.charAt(p);
+        if(textoCarta) textoCarta.textContent += carta.charAt(p);
         p++;
         setTimeout(escribirCarta, 40);
     }
@@ -169,36 +193,39 @@ function escribirCarta(){
 const si = document.getElementById("si");
 const boton5 = document.getElementById("boton5");
 
-si.onclick = () => {
-    cambiarEscena("escena4", "escena5");
+if(si) {
+    si.onclick = () => {
+        cambiarEscena("escena4", "escena5");
 
-    // Tiempo prudente para que cargue la escena antes de abrir el sobre
-    setTimeout(() => {
-        document.querySelector(".envelope").classList.add("open");
-
-        // Espera a que termine de subir la carta completamente para empezar a escribir
         setTimeout(() => {
-            escribirCarta();
+            const sobre = document.querySelector(".envelope");
+            if(sobre) sobre.classList.add("open");
 
-            // Muestra el botón de continuar una vez que el texto casi finaliza
             setTimeout(() => {
-                boton5.classList.remove("oculto");
-            }, 4500);
+                escribirCarta();
 
-        }, 1200);
-    }, 800);
-};
+                setTimeout(() => {
+                    if(boton5) boton5.classList.remove("oculto");
+                }, 4500);
+
+            }, 1200);
+        }, 800);
+    };
+}
 
 //================================================
 // ESCENA 5
 //================================================
 
-boton5.onclick = () => {
-    cambiarEscena("escena5", "escena6");
-};
+if(boton5) {
+    boton5.onclick = () => {
+        cambiarEscena("escena5", "escena6");
+        iniciarGaleria(); // Inicia el ciclo de fotos SOLO cuando entra a la escena
+    };
+}
 
 //================================================
-// GALERIA
+// GALERIA (Solo ejecuta al ser activada)
 //================================================
 
 const fotos = [
@@ -216,64 +243,81 @@ const fotos = [
 
 let indice = 0;
 const galeriaFoto = document.getElementById("galeriaFoto");
+let intervaloGaleria;
 
 function cambiarFoto(){
+    if(!galeriaFoto) return;
     galeriaFoto.style.opacity = 0;
 
     setTimeout(() => {
+        indice = (indice + 1) % fotos.length;
         galeriaFoto.src = fotos[indice];
         galeriaFoto.style.opacity = 1;
-        indice++;
-
-        if(indice >= fotos.length){
-            indice = 0;
-        }
     }, 500);
 }
 
-setInterval(cambiarFoto, 3000);
+function iniciarGaleria() {
+    if(!intervaloGaleria) {
+        intervaloGaleria = setInterval(cambiarFoto, 3000);
+    }
+}
 
 //================================================
 // ESCENA 6
 //================================================
 
 const boton6 = document.getElementById("boton6");
-boton6.onclick = () => {
-    cambiarEscena("escena6", "escena7");
-    iniciarContador();
-};
+if(boton6) {
+    boton6.onclick = () => {
+        clearInterval(intervaloGaleria); // Detiene la galería para ahorrar procesador
+        cambiarEscena("escena6", "escena7");
+        iniciarContador();
+    };
+}
 
 //================================================
-// CONTADOR Y SU BOTÓN DETENER (Corregido y sin duplicados)
+// CONTADOR Y SU BOTÓN DETENER
 //================================================
 let cronometro;
 
 function iniciarContador(){
     const numero = document.getElementById("contadorAleatorio");
+    if(!numero) return;
     cronometro = setInterval(()=>{
         let valor = Math.floor(Math.random()*999);
         numero.innerHTML = valor.toString().padStart(3,'0');
     }, 70);
 }
 
-document.getElementById("detener").onclick = () => {
-    clearInterval(cronometro);
-    document.getElementById("contadorAleatorio").style.fontSize = "70px";
-    document.getElementById("contadorAleatorio").innerHTML = "❤️";
-    document.getElementById("respuestaAmor").innerHTML = "Todos los días quiero verte ❤️";
-    document.getElementById("boton7").classList.remove("oculto");
-    document.getElementById("detener").style.display = "none";
-};
+const botonDetener = document.getElementById("detener");
+if(botonDetener) {
+    botonDetener.onclick = () => {
+        clearInterval(cronometro);
+        const numero = document.getElementById("contadorAleatorio");
+        const respuestaAmor = document.getElementById("respuestaAmor");
+        const boton7 = document.getElementById("boton7");
+        
+        if(numero) {
+            numero.style.fontSize = "70px";
+            numero.innerHTML = "❤️";
+        }
+        if(respuestaAmor) respuestaAmor.innerHTML = "Todos los días quiero verte ❤️";
+        if(boton7) boton7.classList.remove("oculto");
+        botonDetener.style.display = "none";
+    };
+}
 
 //================================================
 // ESCENA 7
 //================================================
 
 const boton7 = document.getElementById("boton7");
-boton7.onclick = () => {
-    cambiarEscena("escena7", "escena8");
-    escribirMensaje();
-};
+if(boton7) {
+    boton7.onclick = () => {
+        cambiarEscena("escena7", "escena8");
+        escribirMensaje();
+    };
+}
 
 //================================================
 // ESCENA 8
@@ -294,27 +338,24 @@ Polar ❤️
 `;
 
 let mf = 0;
-const mensajeFinalElemento = document.getElementById("mensajeFinal");
 
 function escribirMensaje(){
+    const mensajeFinalElemento = document.getElementById("mensajeFinal");
     if(mf < mensajeFinal.length){
-        mensajeFinalElemento.textContent += mensajeFinal.charAt(mf);
+        if(mensajeFinalElemento) mensajeFinalElemento.textContent += mensajeFinal.charAt(mf);
         mf++;
         setTimeout(escribirMensaje, 45);
     }
 }
 
 const boton8 = document.getElementById("boton8");
-boton8.onclick = () => {
-    cambiarEscena("escena8", "escena9");
-};
-
-//================================================
-// ESCENA 9 (Corregido para coincidir bien con tu HTML)
-//================================================
-
-document.getElementById("final").innerHTML = `
-Te quiero muchísimo
-<br><br>
-Mi Chio ❤️
-`;
+if(boton8) {
+    boton8.onclick = () => {
+        cambiarEscena("escena8", "escena9");
+        // Cambiar el nombre dinámico en el cierre
+        const finTxt = document.getElementById("final");
+        if(finTxt) {
+            finTxt.innerHTML = `Te quiero muchísimo<br><br>Mi Chio ❤️`;
+        }
+    };
+}
