@@ -366,7 +366,7 @@ if(boton8) {
         cambiarEscena("escena8", "escena9");
         const finTxt = document.getElementById("final");
         if(finTxt) {
-            finTxt.innerHTML = `Te quiero muchísimo<br><br>Mi Chio ❤️`;
+            finTxt.innerHTML = `Eres mi vida<br>Chio ❤️`;
         }
     };
 }
