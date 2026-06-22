@@ -189,12 +189,10 @@ function escribirCarta(){
 
 const si = document.getElementById("si");
 const btnAbrirSobre = document.getElementById("btnAbrirSobre");
-const tituloSobre = document.getElementById("tituloSobre");
 const boton5 = document.getElementById("boton5");
 
 if(si) {
     si.onclick = () => {
-        // Pasa a la escena 5. El sobre se queda cerrado y el botón se posiciona encima.
         cambiarEscena("escena4", "escena5");
     };
 }
@@ -202,21 +200,16 @@ if(si) {
 // CONTROL CLIC DEL BOTÓN "ABRIR"
 if(btnAbrirSobre) {
     btnAbrirSobre.onclick = () => {
-        // Desaparece el botón "ABRIR" de encima del sobre
         btnAbrirSobre.style.display = "none";
         
-        // Se hace visible el título superior "Te quiero muchísimo mi amor"
-        if(tituloSobre) tituloSobre.classList.remove("oculto");
+        // Se ha removido la lógica del título borrado
 
-        // Agrega la clase para ejecutar la animación del sobre
         const sobre = document.querySelector(".envelope");
         if(sobre) sobre.classList.add("open");
 
-        // Espera a que termine la animación de apertura para empezar a escribir la carta
         setTimeout(() => {
             escribirCarta();
 
-            // Despliega el botón para avanzar a la siguiente escena cuando acabe el texto
             setTimeout(() => {
                 if(boton5) boton5.classList.remove("oculto");
             }, 5000);
