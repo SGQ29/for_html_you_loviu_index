@@ -346,6 +346,6 @@ boton8.onclick = () => {
 
 document.getElementById("final").innerHTML = `
 Te quiero muchísimo
-<br>
-Mi niña ❤️
+<br><br>
+Jacqueline ❤️
 `;
