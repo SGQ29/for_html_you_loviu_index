@@ -138,20 +138,15 @@ no.addEventListener("touchstart", mover);
 //================================================
 
 const carta = `
-Jacqueline...
-
 Mi niña...
 Mi preciosa...
 Mi corazón bonito...
-
 Eres mi lugar seguro.
 La persona con quien más tranquilidad siento.
-
 Gracias por existir.
 Gracias por tu sonrisa.
 Gracias por tus ojitos.
 Gracias por ser tú.
-
 Con muchísimo cariño,
 Polar ❤️
 `;
