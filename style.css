@@ -214,9 +214,10 @@ body {
     white-space: nowrap;
 }
 
+/* CORREGIDO: Ajustado de -140px a -240px para que quede por encima de la carta abierta */
 .sobre-titulo {
     position: absolute;
-    top: -140px; 
+    top: -240px; 
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
@@ -237,11 +238,12 @@ body {
     margin-top: 5px;
 }
 
+/* CORREGIDO: Incrementado el margen superior a 250px para dar espacio vertical al título */
 .envelope-wrapper {
     position: relative;
     width: 460px;  
     height: 310px; 
-    margin: 180px auto 20px auto; 
+    margin: 250px auto 20px auto; 
 }
 
 .envelope {
