@@ -497,17 +497,7 @@ margin:220px auto 20px auto;
 /*=============================*/
 
 
-#contadorAleatorio{
-font-size:95px;
-font-weight:bold;
-color:white;
-margin-top:40px;
-text-shadow:
-0 0 15px #9d4dff,
-0 0 35px #ff0055,
-0 0 70px purple;
-animation:latirNumero 1s infinite;
-}
+
 @keyframes latirNumero{
 0%{
 transform:scale(1);
