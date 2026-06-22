@@ -247,26 +247,45 @@ boton6.onclick = () => {
     cambiarEscena("escena6", "escena7");
     iniciarContador();
 };
-
+document.getElementById("detener")
+.onclick=()=>{
+clearInterval(cronometro);
+document.getElementById(
+"contadorAleatorio"
+)
+.innerHTML="❤️";
+document.getElementById(
+"respuestaAmor"
+)
+.innerHTML=
+"Todos los días quiero verte ❤️";
+document.getElementById(
+"boton7"
+)
+.classList.remove(
+"oculto"
+);
+document.getElementById(
+"detener"
+)
+.style.display="none";
+};
 //================================================
 // CONTADOR
 //================================================
-
+let cronometro;
 function iniciarContador(){
-    let dias = 128;
-    const cont = document.getElementById("contador");
-
-    let inter = setInterval(() => {
-        dias--;
-        cont.innerHTML = dias;
-
-        if(dias <= 0){
-            clearInterval(inter);
-            cont.innerHTML = "❤️";
-        }
-    }, 70);
+const numero =
+document.getElementById("contadorAleatorio");
+cronometro = setInterval(()=>{
+let valor = Math.floor(
+Math.random()*999
+);
+numero.innerHTML=
+valor.toString()
+.padStart(3,'0');
+},70);
 }
-
 //================================================
 // ESCENA 7
 //================================================
