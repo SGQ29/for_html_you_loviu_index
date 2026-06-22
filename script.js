@@ -310,15 +310,15 @@ boton7.onclick = () => {
 //================================================
 
 const mensajeFinal = `
-Eres mi niña.
-Mi preciosa.
-Mi corazón bonito.
-Mi lugar seguro.
+Eres mi niña.<br>
+Mi preciosa.<br>
+Mi corazón bonito.<br>
+Mi lugar seguro.<br>
 
-Gracias por cada sonrisa.
-Gracias por existir.
+Gracias por cada sonrisa.<br>
+Gracias por existir.<br>
 
-Con muchísimo cariño.
+Con muchísimo cariño.<br>
 
 Polar ❤️
 `;
@@ -345,6 +345,6 @@ boton8.onclick = () => {
 
 document.getElementById("final").innerHTML = `
 Te quiero muchísimo
-<br><br>
-Jacqueline ❤️
+<br>
+Mi niña ❤️
 `;
