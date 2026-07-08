@@ -1,167 +1,368 @@
-//======================================================
-// JAVASCRIPT COMPLETAMENTE CONFIGURADO Y OPTIMIZADO
-//======================================================
+//================================================
+// PARA JACQUELINE ❤️
+// Script Unificado
+//================================================
 
-// Arreglo de Fotos para la Galería (Reemplaza con tus rutas reales de tus imágenes)
-const fotosGaleria = [
-    "foto1.jpg",
-    "foto2.jpg",
-    "foto3.jpg",
-    "foto4.jpg"
-];
-let fotoActualIndex = 0;
-let tarjetasReveladasCount = 0;
+//===============================================
+// MENSAJE INICIAL
+//===============================================
+const mensaje = `
+Mi preciosa.
 
-// Inicialización de efectos decorativos al cargar la página
-window.onload = function() {
-    crearEstrellas();
-    setInterval(crearCorazonFlotante, 400);
-    inicializarIndicadoresGaleria();
-};
+Tengo algo importante
+que decirte...
 
-// Función para cambiar entre escenas secuencialmente
-function siguienteEscena(actual, siguiente) {
-    const escenaActual = document.getElementById(`escena${actual}`);
-    const escenaSiguiente = document.getElementById(`escena${siguiente}`);
-    
-    if (escenaActual && escenaSiguiente) {
-        escenaActual.classList.add("oculto");
-        escenaSiguiente.classList.remove("oculto");
+Y espero que me regales
+unos minutitos
+de tu tiempo ❤️
+`;
+
+let i = 0;
+let texto = "";
+let maquina;
+
+function escribir() {
+    if (i < mensaje.length) {
+        texto += mensaje.charAt(i);
+        document.getElementById("texto").innerHTML = texto.replace(/\n/g, "<br>");
+        i++;
+        maquina = setTimeout(escribir, 45);
     }
 }
+escribir();
 
-// Control de las Tarjetas de la Escena 3
-function revelarTarjeta(elemento) {
-    if (!elemento.classList.contains("revelada")) {
-        elemento.classList.add("revelada");
-        tarjetasReveladasCount++;
-        
-        // Muestra el botón de avanzar solo al revelar las 3 tarjetas
-        if (tarjetasReveladasCount === 3) {
-            document.getElementById("btnTarjetasSiguiente").classList.remove("oculto");
-        }
+//===============================================
+// ESTRELLAS
+//===============================================
+function estrellas() {
+    const fondo = document.getElementById("stars");
+    const fragmento = document.createDocumentFragment();
+
+    for (let i = 0; i < 100; i++) {
+        const estrella = document.createElement("div");
+        estrella.className = "star";
+        estrella.style.left = Math.random() * 100 + "vw";
+        estrella.style.top = Math.random() * 100 + "vh";
+        estrella.style.width = "2px";
+        estrella.style.height = "2px";
+        estrella.style.animationDelay = Math.random() * 3 + "s";
+        fragmento.appendChild(estrella);
     }
+    fondo.appendChild(fragmento);
 }
+estrellas();
 
-// Mecánica del Botón "No" en Escena 4
-function moverBotonNo() {
-    const btnNo = document.getElementById("no");
-    const x = Math.random() * (window.innerWidth - btnNo.offsetWidth - 40) + 20;
-    const y = Math.random() * (window.innerHeight - btnNo.offsetHeight - 40) + 20;
-    
-    btnNo.style.position = "fixed";
-    btnNo.style.left = `${x}px`;
-    btnNo.style.top = `${y}px`;
-}
+//===============================================
+// CORAZONES FLOTANDO
+//===============================================
+function crearCorazon() {
+    if (document.hidden) return;
 
-// Acción de respuesta para la pregunta
-function responderPregunta(acepto) {
-    if (acepto) {
-        const btnNo = document.getElementById("no");
-        btnNo.style.position = "static";
-        siguienteEscena(4, 5);
-    }
-}
-
-// Animación de Apertura del Sobre (Escena 5)
-function abrirSobre() {
-    const envelope = document.getElementById("envelope");
-    const btnAbrir = document.getElementById("btnAbrirSobre");
-    const btnSiguiente = document.getElementById("btnCartaSiguiente");
-    
-    if (envelope && !envelope.classList.contains("open")) {
-        envelope.classList.add("open");
-        btnAbrir.classList.add("oculto");
-        
-        // Muestra el botón para avanzar después de que termine la animación
-        setTimeout(() => {
-            btnSiguiente.classList.remove("oculto");
-        }, 1200);
-    }
-}
-
-// Inicialización de los puntos indicadores en la Galería
-function inicializarIndicadoresGaleria() {
-    const contenedoresIndicadores = document.getElementById("indicadores");
-    if (!contenedoresIndicadores) return;
-    
-    contenedoresIndicadores.innerHTML = "";
-    fotosGaleria.forEach((_, index) => {
-        const dot = document.createElement("div");
-        dot.classList.add("indicador");
-        if (index === 0) dot.classList.add("activo");
-        contenedoresIndicadores.appendChild(dot);
-    });
-}
-
-// Control del Carrusel de Fotos (Escena 6)
-function siguienteFotoGaleria() {
-    fotoActualIndex++;
-    const imgElement = document.getElementById("galeriaFoto");
-    const indicadores = document.querySelectorAll(".indicador");
-    
-    if (fotoActualIndex < fotosGaleria.length) {
-        imgElement.src = fotosGaleria[fotoActualIndex];
-        indicadores.forEach((dot, idx) => {
-            dot.classList.toggle("activo", idx === fotoActualIndex);
-        });
-    }
-    
-    if (fotoActualIndex === fotosGaleria.length - 1) {
-        document.getElementById("btnGaleriaSiguiente").classList.remove("oculto");
-    }
-}
-
-// Efecto del Contador del Amor Rápido (Escena 7)
-function calcularAmor() {
-    const contador = document.getElementById("contadorAleatorio");
-    const respuesta = document.getElementById("respuestaAmor");
-    const btnCalcular = document.getElementById("btnCalcularAmor");
-    const btnSiguiente = document.getElementById("btnContadorSiguiente");
-    
-    btnCalcular.classList.add("oculto");
-    let valorActual = 0;
-    
-    const intervalo = setInterval(() => {
-        valorActual += Math.floor(Math.random() * 4) + 1;
-        if (valorActual >= 100) {
-            valorActual = 100;
-            clearInterval(intervalo);
-            contador.innerText = "1000000%";
-            respuesta.innerText = "¡Mi amor por ti no se puede medir! Infinity ❤️";
-            btnSiguiente.classList.remove("oculto");
-        } else {
-            contador.innerText = `${valorActual}%`;
-        }
-    }, 30);
-}
-
-// Generación de fondo estrellado estático parpadeante
-function crearEstrellas() {
-    for (let i = 0; i < 60; i++) {
-        const star = document.createElement("div");
-        star.classList.add("star");
-        star.style.width = `${Math.random() * 3 + 1}px`;
-        star.style.height = star.style.width;
-        star.style.left = `${Math.random() * 100}vw`;
-        star.style.top = `${Math.random() * 100}vh`;
-        star.style.animationDelay = `${Math.random() * 2}s`;
-        document.body.appendChild(star);
-    }
-}
-
-// Generación de corazones flotantes ascendentes
-function crearCorazonFlotante() {
-    const listaCorazones = ["❤️", "💖", "💝", "💕", "🌸"];
     const corazon = document.createElement("div");
-    corazon.classList.add("corazon");
-    corazon.innerText = listaCorazones[Math.floor(Math.random() * listaCorazones.length)];
-    corazon.style.left = `${Math.random() * 100}vw`;
-    corazon.style.fontSize = `${Math.random() * 20 + 16}px`;
-    corazon.style.animationDuration = `${Math.random() * 3 + 3}s`;
+    corazon.className = "corazon";
+    corazon.innerHTML = "❤️";
+    corazon.style.left = Math.random() * 90 + "vw";
+    corazon.style.fontSize = (20 + Math.random() * 15) + "px";
     document.body.appendChild(corazon);
-    
+
     setTimeout(() => {
         corazon.remove();
     }, 5000);
 }
+setInterval(crearCorazon, 1800);
+
+//===============================================
+// CAMBIO DE ESCENAS
+//===============================================
+function cambiarEscena(actual, siguiente) {
+    document.getElementById(actual).classList.add("oculto");
+    document.getElementById(siguiente).classList.remove("oculto");
+}
+
+//===============================================
+// MÚSICA
+//===============================================
+const musica = document.getElementById("musica");
+
+//===============================================
+// ESCENA 1
+//===============================================
+document.getElementById("boton1").onclick = () => {
+    clearTimeout(maquina);
+    musica.play().catch(() => {});
+    cambiarEscena("escena1", "escena2");
+};
+
+//===============================================
+// ESCENA 2
+//===============================================
+document.getElementById("boton2").onclick = () => {
+    cambiarEscena("escena2", "escena3");
+};
+
+//===============================================
+// TARJETAS (ESCENA 3)
+//===============================================
+let abiertas = 0;
+function revelarTarjeta(tarjeta) {
+    if (tarjeta.classList.contains("revelada")) return;
+
+    tarjeta.classList.add("revelada");
+    abiertas++;
+
+    if (abiertas === 3) {
+        setTimeout(() => {
+            document.getElementById("boton3").classList.remove("oculto");
+        }, 800);
+    }
+}
+
+document.getElementById("boton3").onclick = () => {
+    cambiarEscena("escena3", "escena4");
+};
+
+//===============================================
+// BOTÓN "NO" (ESCENA 4)
+//===============================================
+const botonNo = document.getElementById("no");
+
+function moverBoton() {
+    let x = Math.random() * (window.innerWidth - 220);
+    let y = Math.random() * (window.innerHeight - 120);
+
+    botonNo.style.position = "fixed";
+    botonNo.style.left = x + "px";
+    botonNo.style.top = y + "px";
+}
+
+botonNo.addEventListener("mouseover", moverBoton);
+botonNo.addEventListener("touchstart", moverBoton, { passive: true });
+
+//===============================================
+// BOTÓN "SÍ" (ESCENA 4)
+//===============================================
+document.getElementById("si").onclick = () => {
+    cambiarEscena("escena4", "escena5");
+};
+
+//===============================================
+// CARTA (ESCENA 5)
+//===============================================
+const carta = `
+Mi niña...
+
+Mi preciosa...
+
+Mi corazón bonito...
+
+Quiero que nunca olvides
+lo especial que eres para mí.
+
+Gracias por cada sonrisa.
+
+Gracias por cada abrazo.
+
+Gracias por hacerme sentir
+tan tranquilo cuando estoy contigo.
+
+Me encanta escuchar tu voz,
+verte sonreír
+y compartir momentos contigo.
+
+Eres mi lugar seguro.
+
+Y espero poder seguir creando
+muchísimos recuerdos contigo.
+
+Con muchísimo cariño...
+
+Polar ❤️
+`;
+
+let indiceCarta = 0;
+const textoCarta = document.getElementById("textoCarta");
+
+function escribirCarta() {
+    if (indiceCarta < carta.length) {
+        textoCarta.textContent += carta.charAt(indiceCarta);
+        indiceCarta++;
+        setTimeout(escribirCarta, 38);
+    }
+}
+
+//===============================================
+// BOTÓN ABRIR SOBRE (ESCENA 5)
+//===============================================
+const botonAbrir = document.getElementById("btnAbrirSobre");
+const boton5 = document.getElementById("boton5");
+
+botonAbrir.onclick = () => {
+    botonAbrir.style.display = "none";
+    const sobre = document.querySelector(".envelope");
+    sobre.classList.add("open");
+
+    setTimeout(() => {
+        escribirCarta();
+        setTimeout(() => {
+            boton5.classList.remove("oculto");
+        }, 5200);
+    }, 1200);
+};
+
+boton5.onclick = () => {
+    cambiarEscena("escena5", "escena6");
+    iniciarGaleria();
+};
+
+//===============================================
+// GALERÍA (ESCENA 6)
+//===============================================
+const fotos = [
+    "amor.jpg",
+    "feli.jpg",
+    "felij.jpg",
+    "familia.jpg",
+    "nojada.jpg",
+    "Ojos.jpg",
+    "Diosa.jpg",
+    "divina.jpg",
+    "bonita.jpg",
+    "cariño.jpg"
+];
+
+let indiceFoto = 0;
+let intervaloGaleria;
+const galeria = document.getElementById("galeriaFoto");
+
+function cambiarFoto() {
+    galeria.style.opacity = 0;
+    setTimeout(() => {
+        indiceFoto++;
+        if (indiceFoto >= fotos.length) {
+            indiceFoto = 0;
+        }
+        galeria.src = fotos[indiceFoto];
+        galeria.style.opacity = 1;
+    }, 500);
+}
+
+function iniciarGaleria() {
+    if (intervaloGaleria) return;
+    intervaloGaleria = setInterval(cambiarFoto, 3000);
+}
+
+document.getElementById("boton6").onclick = () => {
+    clearInterval(intervaloGaleria);
+    cambiarEscena("escena6", "escena7");
+    iniciarContador();
+};
+
+//===============================================
+// CONTADOR (ESCENA 7)
+//===============================================
+let cronometro;
+
+function iniciarContador() {
+    const numero = document.getElementById("contadorAleatorio");
+    cronometro = setInterval(() => {
+        const valor = Math.floor(Math.random() * 999);
+        numero.innerHTML = valor.toString().padStart(3, "0");
+    }, 70);
+}
+
+document.getElementById("detener").onclick = () => {
+    clearInterval(cronometro);
+    const numero = document.getElementById("contadorAleatorio");
+    numero.innerHTML = "❤️";
+    numero.style.fontSize = "80px";
+
+    document.getElementById("respuestaAmor").innerHTML = "Todos los días quiero verte ❤️";
+    document.getElementById("boton7").classList.remove("oculto");
+    document.getElementById("detener").style.display = "none";
+};
+
+//===============================================
+// MENSAJE FINAL (ESCENA 8)
+//===============================================
+const mensajeFinal = `
+Eres mi niña.
+
+Mi preciosa.
+
+Mi corazón bonito.
+
+Mi lugar seguro.
+
+Gracias por cada sonrisa.
+
+Gracias por cada abrazo.
+
+Gracias por existir.
+
+No sabes lo feliz que me haces.
+
+Y quiero seguir compartiendo
+muchísimos momentos contigo.
+
+Te quiero muchísimo ❤️
+
+Con todo mi cariño...
+
+Polar ❤️
+`;
+
+let indiceMensaje = 0;
+const mensajeElemento = document.getElementById("mensajeFinal");
+
+function escribirMensaje() {
+    if (indiceMensaje < mensajeFinal.length) {
+        mensajeElemento.innerHTML += mensajeFinal.charAt(indiceMensaje);
+        indiceMensaje++;
+        setTimeout(escribirMensaje, 45);
+    }
+}
+
+document.getElementById("boton7").onclick = () => {
+    cambiarEscena("escena7", "escena8");
+    escribirMensaje();
+};
+
+//===============================================
+// INTERACCIONES FINALES (ESCENAS 8, 9, 10)
+//===============================================
+document.getElementById("boton8").onclick = () => {
+    cambiarEscena("escena8", "escena9");
+};
+
+document.getElementById("boton9").onclick = () => {
+    cambiarEscena("escena9", "escena10");
+};
+
+//===============================================
+// EFECTO EXTRA DE CORAZONES EN ESCENA FINAL
+//===============================================
+function lluviaFinal() {
+    const corazon = document.createElement("div");
+    corazon.innerHTML = "💖";
+    corazon.className = "corazon";
+    corazon.style.left = Math.random() * 100 + "vw";
+    corazon.style.fontSize = (20 + Math.random() * 30) + "px";
+    corazon.style.animationDuration = (3 + Math.random() * 2) + "s";
+    document.body.appendChild(corazon);
+
+    setTimeout(() => {
+        corazon.remove();
+    }, 5000);
+}
+
+// Observador para activar la lluvia intensa al mostrar la escena 10
+const escena10 = document.getElementById("escena10");
+const observador = new MutationObserver(() => {
+    if (!escena10.classList.contains("oculto")) {
+        setInterval(lluviaFinal, 450);
+    }
+});
+
+observador.observe(escena10, { attributes: true });
+
+console.log("Para la niña más bonita del mundo ❤️");
