@@ -1,6 +1,6 @@
 /*======================================================
  PARA JACQUELINE ❤️
- Style Completo Corregido - Centrado Perfecto y Proporcional
+ Style Completo Corregido - Centrado Absoluto Original
 ======================================================*/
 
 *{
@@ -34,7 +34,7 @@ OVERLAY
 }
 
 /*======================================================
-ESCENAS (Centrado perfecto en el viewport)
+ESCENAS - CENTRADO ABSOLUTO ORIGINAL (IGUAL A TUS CÓDIGOS)
 ======================================================*/
 .container{
     position:absolute;
@@ -234,13 +234,20 @@ PREGUNTA (ESCENA 4)
 }
 
 /*======================================================
-SOBRE Y CARTA PREMIUM (ESCENA 5)
+SOBRE Y CARTA PREMIUM (ESCENA 5) - REDISEÑO PARA CENTRADO
 ======================================================*/
 .envelope-wrapper{
     position:relative;
-    width:460px;
-    height:310px;
-    margin:40px auto 20px auto; /* Margen optimizado para balancear el centrado vertical */
+    width:450px;
+    height:280px;
+    margin:35px auto;
+    transition: transform 1.2s ease;
+}
+
+/* Efecto corrector: Cuando el sobre se abre, todo el bloque se desplaza ligeramente
+   hacia abajo para compensar la salida de la carta, manteniéndose en el centro perfecto */
+.envelope-wrapper:has(.envelope.open) {
+    transform: translateY(60px);
 }
 
 #btnAbrirSobre{
@@ -268,9 +275,9 @@ SOBRE Y CARTA PREMIUM (ESCENA 5)
     left:0;
     width:0;
     height:0;
-    border-left:230px solid transparent;
-    border-right:230px solid transparent;
-    border-top:165px solid #5a0c2a;
+    border-left:225px solid transparent;
+    border-right:225px solid transparent;
+    border-top:150px solid #5a0c2a;
     transform-origin:top;
     transition:1s;
     z-index:5;
@@ -282,10 +289,10 @@ SOBRE Y CARTA PREMIUM (ESCENA 5)
     left:0;
     width:0;
     height:0;
-    border-left:230px solid #4a0018;
-    border-right:230px solid #4a0018;
-    border-top:145px solid transparent;
-    border-bottom:165px solid #4a0018;
+    border-left:225px solid #4a0018;
+    border-right:225px solid #4a0018;
+    border-top:130px solid transparent;
+    border-bottom:150px solid #4a0018;
     z-index:4;
 }
 
@@ -302,10 +309,10 @@ SOBRE Y CARTA PREMIUM (ESCENA 5)
 
 .letter{
     position:absolute;
-    left:20px;
+    left:15px;
     bottom:15px;
     width:420px;
-    height:280px;
+    height:250px;
     background:white;
     border-radius:15px;
     padding:15px;
@@ -354,15 +361,16 @@ SOBRE Y CARTA PREMIUM (ESCENA 5)
     z-index:1;
 }
 
+/* Modificación clave: Controlamos la subida exacta para mantener los límites de la pantalla */
 .envelope.open .letter{
-    transform:translateY(-180px);
-    height:460px;
+    transform:translateY(-130px);
+    height:360px;
     z-index:3;
     box-shadow:0 -10px 20px rgba(255,70,120,.3), 0 15px 30px rgba(0,0,0,.35);
 }
 
 .decoracion-inferior{
-    margin-top:45px;
+    margin-top:25px;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -568,20 +576,20 @@ RESPONSIVE (MÓVILES Y TABLETS)
     .tarjeta-atras{ font-size:13px; line-height:20px; }
     .pregunta{ font-size:28px; line-height:42px; }
 
-    /* Ajuste responsivo del sobre */
-    .envelope-wrapper{ width:320px; height:220px; margin-top:30px; }
-    .flap{ border-left:160px solid transparent; border-right:160px solid transparent; border-top:110px solid #5a0c2a; }
-    .pocket{ border-left:160px solid #4a0018; border-right:160px solid #4a0018; border-top:100px solid transparent; border-bottom:120px solid #4a0018; }
-    .letter{ width:285px; height:200px; left:18px; bottom:10px; }
-    .envelope.open .letter{ height:340px; transform:translateY(-140px); }
-    .letter-text{ font-size:15px; line-height:24px; }
+    /* Ajuste responsivo del sobre en celulares */
+    .envelope-wrapper{ width:310px; height:210px; margin:20px auto; }
+    .envelope-wrapper:has(.envelope.open) { transform: translateY(45px); }
+    .flap{ border-left:155px solid transparent; border-right:155px solid transparent; border-top:105px solid #5a0c2a; }
+    .pocket{ border-left:155px solid #4a0018; border-right:155px solid #4a0018; border-top:95px solid transparent; border-bottom:115px solid #4a0018; }
+    .letter{ width:280px; height:180px; left:15px; bottom:10px; }
+    .envelope.open .letter{ height:270px; transform: translateY(-95px); }
+    .letter-text{ font-size:14px; line-height:22px; }
 
     #galeriaFoto{ width:280px; }
     #contadorAleatorio{ font-size:70px; }
     #respuestaAmor{ font-size:26px; }
     #mensajeFinal{ font-size:20px; line-height:36px; min-height:260px; }
     
-    /* Escena Final en Móviles */
     #final{ font-size:38px !important; line-height:50px !important; }
     #firma{ font-size:26px !important; }
     #fraseFinal{ font-size:18px !important; line-height:32px !important; }
