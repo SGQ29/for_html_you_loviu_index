@@ -568,29 +568,14 @@ document
 
 const mensajeFinal = `
 Eres mi niña.
-
 Mi preciosa.
-
 Mi corazón bonito.
-
-Mi lugar seguro.
-
 Gracias por cada sonrisa.
-
 Gracias por cada abrazo.
-
 Gracias por existir.
-
 No sabes lo feliz que me haces.
-
 Y quiero seguir compartiendo
 muchísimos momentos contigo.
-
-Te quiero muchísimo ❤️
-
-Con todo mi cariño...
-
-Polar ❤️
 `;
 
 let indiceMensaje = 0;
