@@ -279,33 +279,19 @@ document
 
 const carta = `
 Mi niña...
-
 Mi preciosa...
-
 Mi corazón bonito...
-
 Quiero que nunca olvides
 lo especial que eres para mí.
-
 Gracias por cada sonrisa.
-
 Gracias por cada abrazo.
-
 Gracias por hacerme sentir
 tan tranquilo cuando estoy contigo.
-
 Me encanta escuchar tu voz,
 verte sonreír
 y compartir momentos contigo.
-
-Eres mi lugar seguro.
-
-Y espero poder seguir creando
+Espero poder seguir creando
 muchísimos recuerdos contigo.
-
-Con muchísimo cariño...
-
-Polar ❤️
 `;
 
 let indiceCarta = 0;
@@ -579,29 +565,15 @@ document
 
 const mensajeFinal = `
 Eres mi niña.
-
 Mi preciosa.
-
 Mi corazón bonito.
-
-Mi lugar seguro.
-
 Gracias por cada sonrisa.
-
 Gracias por cada abrazo.
-
 Gracias por existir.
-
 No sabes lo feliz que me haces.
-
-Y quiero seguir compartiendo
-muchísimos momentos contigo.
-
-Te quiero muchísimo ❤️
-
-Con todo mi cariño...
-
-Polar ❤️
+Y quiero que nos sigamos enamorando a diario, en nuestras
+altas y bajas, siempre.
+Quizás es muy idealizado pero contigo lo deseo todo.
 `;
 
 let indiceMensaje = 0;
