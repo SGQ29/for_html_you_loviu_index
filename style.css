@@ -1,6 +1,6 @@
 /*======================================================
  PARA JACQUELINE ❤️
- Style Completo Corregido
+ Style Completo Corregido - Centrado Perfecto y Proporcional
 ======================================================*/
 
 *{
@@ -34,7 +34,7 @@ OVERLAY
 }
 
 /*======================================================
-ESCENAS
+ESCENAS (Centrado perfecto en el viewport)
 ======================================================*/
 .container{
     position:absolute;
@@ -76,7 +76,7 @@ BOTONES
     background:linear-gradient(45deg,#4a0018,#5f2380);
     box-shadow:0 0 15px #6d1b7b, 0 0 30px #4a0018;
     transition:.4s;
-    margin-top:35px;
+    margin-top:25px;
 }
 
 .btn-principal:hover{
@@ -105,7 +105,7 @@ ESCENA 1
     color:white;
     font-size:34px;
     line-height:55px;
-    min-height:180px;
+    min-height:140px;
     text-shadow:0 0 10px purple, 0 0 25px crimson;
 }
 
@@ -130,6 +130,7 @@ TÍTULOS Y TEXTOS
     line-height:42px;
     color:white;
     text-shadow:0 0 12px black;
+    text-align:center;
 }
 
 /*======================================================
@@ -198,6 +199,7 @@ PREGUNTA (ESCENA 4)
     line-height:55px;
     color:white;
     text-shadow:0 0 15px purple;
+    text-align:center;
 }
 
 .botones-container{
@@ -238,7 +240,7 @@ SOBRE Y CARTA PREMIUM (ESCENA 5)
     position:relative;
     width:460px;
     height:310px;
-    margin:110px auto 20px auto;
+    margin:40px auto 20px auto; /* Margen optimizado para balancear el centrado vertical */
 }
 
 #btnAbrirSobre{
@@ -343,6 +345,8 @@ SOBRE Y CARTA PREMIUM (ESCENA 5)
     line-height:29px;
     color:#40232b;
     text-align:center;
+    display:block;
+    white-space:pre-line;
 }
 
 .envelope.open .flap{
@@ -449,14 +453,6 @@ CONTADOR (ESCENA 7)
     text-shadow:0 0 12px white, 0 0 25px #ff4d88, 0 0 40px purple;
 }
 
-.botones-contador{
-    margin-top:40px;
-    display:flex;
-    justify-content:center;
-    gap:25px;
-    flex-wrap:wrap;
-}
-
 /*======================================================
 MENSAJE FINAL (ESCENA 8)
 ======================================================*/
@@ -474,10 +470,12 @@ MENSAJE FINAL (ESCENA 8)
     text-shadow:0 0 10px purple, 0 0 20px crimson;
     min-height:320px;
     text-align:center;
+    margin:0 auto;
+    white-space:pre-line;
 }
 
 /*======================================================
-ESCENA 9
+ESCENA 9: CIERRE EXCLUSIVO
 ======================================================*/
 .final-card{
     display:flex;
@@ -493,50 +491,25 @@ ESCENA 9
     color:white;
     text-shadow:0 0 20px #8d48ff, 0 0 40px crimson, 0 0 80px purple;
     animation:brillo 2s infinite;
+    text-align:center;
 }
 
 #firma{
     margin-top:25px;
-    font-size:30px;
+    font-size:32px;
     color:#e6d3ff;
+    text-shadow:0 0 15px purple;
+    text-align:center;
 }
 
 #fraseFinal{
     margin-top:40px;
-    font-size:23px;
+    font-size:24px;
     line-height:38px;
     color:white;
     text-shadow:0 0 10px purple;
-}
-
-/*======================================================
-ESCENA 10
-======================================================*/
-#escena10{
-    animation:fade 1.5s;
-}
-
-#escena10 h1.titulo-escena{
-    font-size:62px !important;
-    color:white !important;
-    text-shadow:0 0 20px deeppink, 0 0 40px purple, 0 0 80px crimson !important;
-    animation:brillo 2s infinite;
-}
-
-#escena10 h2{
-    font-size:42px !important;
-    margin-top:25px !important;
-    color:#ffe0f2 !important;
-    text-shadow:0 0 18px hotpink !important;
-}
-
-#escena10 p{
-    margin-top:35px !important;
-    font-size:26px !important;
-    line-height:46px !important;
-    color:white !important;
-    text-shadow:0 0 12px purple, 0 0 25px crimson !important;
-    max-width:800px;
+    text-align:center;
+    max-width:650px;
 }
 
 /*======================================================
@@ -587,7 +560,7 @@ RESPONSIVE (MÓVILES Y TABLETS)
 ======================================================*/
 @media(max-width:768px){
     #fotoPrincipal{ width:250px; }
-    #texto{ font-size:24px; line-height:42px; min-height:140px; }
+    #texto{ font-size:24px; line-height:42px; min-height:120px; }
     .titulo-escena{ font-size:30px; }
     .texto-intermedio{ font-size:18px; line-height:32px; }
     .tarjeta{ width:140px; height:180px; }
@@ -595,8 +568,8 @@ RESPONSIVE (MÓVILES Y TABLETS)
     .tarjeta-atras{ font-size:13px; line-height:20px; }
     .pregunta{ font-size:28px; line-height:42px; }
 
-    /* Ajuste responsivo de la carta */
-    .envelope-wrapper{ width:320px; height:220px; margin-top:80px; }
+    /* Ajuste responsivo del sobre */
+    .envelope-wrapper{ width:320px; height:220px; margin-top:30px; }
     .flap{ border-left:160px solid transparent; border-right:160px solid transparent; border-top:110px solid #5a0c2a; }
     .pocket{ border-left:160px solid #4a0018; border-right:160px solid #4a0018; border-top:100px solid transparent; border-bottom:120px solid #4a0018; }
     .letter{ width:285px; height:200px; left:18px; bottom:10px; }
@@ -607,12 +580,11 @@ RESPONSIVE (MÓVILES Y TABLETS)
     #contadorAleatorio{ font-size:70px; }
     #respuestaAmor{ font-size:26px; }
     #mensajeFinal{ font-size:20px; line-height:36px; min-height:260px; }
-    #final{ font-size:44px; line-height:58px; }
-
-    /* Mitigación de estilos en línea en Escena 10 */
-    #escena10 h1.titulo-escena{ font-size:38px !important; }
-    #escena10 h2{ font-size:28px !important; }
-    #escena10 p{ font-size:18px !important; line-height:34px !important; }
+    
+    /* Escena Final en Móviles */
+    #final{ font-size:38px !important; line-height:50px !important; }
+    #firma{ font-size:26px !important; }
+    #fraseFinal{ font-size:18px !important; line-height:32px !important; }
     
     .btn-principal{ font-size:18px; padding:14px 28px; }
 }
