@@ -309,6 +309,7 @@ rotateY(180deg);
 
 }
 
+.tarjeta-ffront,
 .tarjeta-frente,
 .tarjeta-atras{
 
@@ -450,7 +451,8 @@ SOBRE Y CARTA PREMIUM
 
     height:310px;
 
-    margin:110px auto 20px auto;
+    /* CORREGIDO: Reducido para eliminar el espacio en blanco de arriba */
+    margin:15px auto 20px auto;
 
 }
 
@@ -650,7 +652,7 @@ z-index:2;
 
 .envelope.open .letter{
     transform:translateY(-160px);
-    z-index:3;
+    z-index:10; /* CORREGIDO: Subido a 10 para ponerse al frente del sobre y permitir scroll/ver el texto */
     height:500px;
 }
 
@@ -1155,7 +1157,7 @@ opacity:.6;
 
 }
 
-@keyframes aparecerFinal{
+@keyframes desaparecerFinal{
 
 from{
 
@@ -1227,7 +1229,8 @@ width:320px;
 
 height:220px;
 
-margin-top:80px;
+/* CORREGIDO RESPONSIVE: Reducido también para que en celulares no se baje */
+margin-top:20px;
 
 }
 
@@ -1268,6 +1271,8 @@ left:18px;
 height:320px;
 
 transform:translateY(-120px);
+
+z-index: 10; /* CORREGIDO RESPONSIVE: Mantiene la carta enfrente en móviles */
 
 }
 
