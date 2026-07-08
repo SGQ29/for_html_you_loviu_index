@@ -284,7 +284,7 @@ SOBRE Y CARTA PREMIUM
 }
 
 /*==========================
-CARTA (SISTEMA CORREGIDO)
+CARTA
 ==========================*/
 .letter{
     position:absolute;
@@ -303,10 +303,9 @@ CARTA (SISTEMA CORREGIDO)
 }
 
 .envelope.open .letter{
-    transform:translateY(-210px); /* Sube más para despegarse del sobre */
-    z-index:20;                  /* Capa superior absoluta para evitar bloqueos */
-    height:380px;                 /* Altura de caja equilibrada */
-    overflow-y:visible;
+    transform:translateY(-210px);
+    z-index:20;
+    height:380px;
 }
 
 .letter-border{
@@ -314,18 +313,16 @@ CARTA (SISTEMA CORREGIDO)
     height:100%;
     border:1px dashed #e6afc2;
     border-radius:12px;
-    padding:15px;
+    padding:12px;
     box-sizing:border-box;
-    display:block;                /* Cambiado a block para habilitar scroll nativo */
-    overflow-y:auto;              /* Habilita scroll vertical */
-    
-    /* Ocultar barra de scroll visual manteniendo funcionalidad */
+    display:block;
+    overflow-y:auto;
     -ms-overflow-style:none;
     scrollbar-width:none;
 }
 
 .letter-border::-webkit-scrollbar{
-    display:none;                 /* Oculta barra en Chrome/Safari */
+    display:none;
 }
 
 .letter-heart-top{
@@ -341,7 +338,7 @@ CARTA (SISTEMA CORREGIDO)
     line-height:26px;
     color:#3d2229;
     white-space:pre-line;
-    padding-bottom:25px;          /* Colchón al final para que la firma no se corte */
+    padding-bottom:20px;
 }
 
 /*======================================================
@@ -449,7 +446,7 @@ CONTADOR
 }
 
 /*======================================================
-MENSAJE FINAL ELEGANTE
+MENSAJE FINAL
 ======================================================*/
 .mensaje-elegante{
     margin-top:30px;
@@ -508,7 +505,7 @@ ESCENA 10
 }
 
 /*======================================================
-ESTRELLAS Y CORAZONES ANIMADOS
+ESTRELLAS Y CORAZONES
 ======================================================*/
 .star{
     position:absolute;
@@ -542,13 +539,13 @@ ESTRELLAS Y CORAZONES ANIMADOS
     50%{ opacity:1; }
 }
 
-@keyframes desaparecerFinal{
+@keyframes determinarFinal{
     from{ opacity:0; transform:translateY(40px); }
     to{ opacity:1; transform:translateY(0); }
 }
 
 /*======================================================
-RESPONSIVE (OPTIMIZADO PARA MÓVILES)
+RESPONSIVE (MÓVILES)
 ======================================================*/
 @media(max-width:768px){
     #fotoPrincipal{ width:250px; }
@@ -591,5 +588,9 @@ RESPONSIVE (OPTIMIZADO PARA MÓVILES)
     #contadorAleatorio{ font-size:70px; }
     #mensajeFinal{ font-size:22px; line-height:38px; }
     #final{ font-size:48px; line-height:60px; }
+    
+    #escena10 h1 { font-size:42px !important; }
+    #escena10 h2 { font-size:30px !important; }
+    #escena10 p { font-size:20px !important; line-height:34px !important; }
     .btn-principal{ font-size:18px; padding:14px 28px; }
 }
