@@ -1,6 +1,6 @@
 //================================================
 // PARA JACQUELINE ❤️
-// Script General Unificado - Corregido
+// Script General Unificado - Corregido y Optimizado
 //================================================
 
 // MÁQUINA DE ESCRIBIR - ESCENA 1
@@ -10,26 +10,27 @@ let texto = "";
 let maquina;
 
 function escribir() {
-    if (i < mensaje.length) {
+    const contenedorTexto = document.getElementById("texto");
+    if (contenedorTexto && i < mensaje.length) {
         texto += mensaje.charAt(i);
-        document.getElementById("texto").innerHTML = texto.replace(/\n/g, "<br>");
+        contenedorTexto.innerHTML = texto.replace(/\n/g, "<br>");
         i++;
         maquina = setTimeout(escribir, 45);
     }
 }
 
-// Ejecutar máquina de escribir cuando la página cargue por completo
-window.onload = () => {
+// Ejecutar cuando el DOM esté listo para evitar retrasos
+document.addEventListener("DOMContentLoaded", () => {
     escribir();
     estrellas();
-};
+});
 
 // EFECTO ESTRELLAS DE FONDO
 function estrellas() {
     const fondo = document.getElementById("stars");
     if (!fondo) return;
     const fragmento = document.createDocumentFragment();
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 60; i++) { // Optimizado a 60 para evitar lag en móviles
         const estrella = document.createElement("div");
         estrella.className = "star";
         estrella.style.left = Math.random() * 100 + "vw";
@@ -48,22 +49,23 @@ function crearCorazon() {
     const corazon = document.createElement("div");
     corazon.className = "corazon";
     corazon.innerHTML = "❤️";
-    corazon.style.left = Math.random() * 90 + "vw";
-    corazon.style.fontSize = (20 + Math.random() * 15) + "px";
+    corazon.style.left = Math.random() * 85 + "vw";
+    corazon.style.fontSize = (18 + Math.random() * 12) + "px";
     document.body.appendChild(corazon);
-    setTimeout(() => { corazon.remove(); }, 5000);
+    setTimeout(() => { corazon.remove(); }, 4000);
 }
-setInterval(crearCorazon, 1800);
+setInterval(crearCorazon, 2000);
 
-// NAVEGACIÓN DE ESCENAS
+// NAVEGACIÓN DE ESCENAS (Hace scroll automático al tope al cambiar de escena)
 function cambiarEscena(actual, siguiente) {
     document.getElementById(actual).classList.add("oculto");
-    document.getElementById(siguiente).classList.remove("oculto");
+    const prox = document.getElementById(siguiente);
+    prox.classList.remove("oculto");
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 const musica = document.getElementById("musica");
 
-// PASES DE BOTONES b1 -> b2 -> b3
 document.getElementById("boton1").onclick = () => {
     clearTimeout(maquina);
     if (musica) {
@@ -85,7 +87,7 @@ function revelarTarjeta(tarjeta) {
     if (abiertas === 3) {
         setTimeout(() => {
             document.getElementById("boton3").classList.remove("oculto");
-        }, 800);
+        }, 600);
     }
 }
 
@@ -96,8 +98,8 @@ document.getElementById("boton3").onclick = () => {
 // BOTÓN TRAVIESO "NO"
 const botonNo = document.getElementById("no");
 function moverBoton() {
-    let x = Math.random() * (window.innerWidth - 220);
-    let y = Math.random() * (window.innerHeight - 120);
+    let x = Math.random() * (window.innerWidth - 150);
+    let y = Math.random() * (window.innerHeight - 80);
     botonNo.style.position = "fixed";
     botonNo.style.left = x + "px";
     botonNo.style.top = y + "px";
@@ -124,53 +126,73 @@ Con muchísimo cariño...
 Polar ❤️`;
 
 let indiceCarta = 0;
-const textoCarta = document.getElementById("textoCarta");
-
 function escribirCarta() {
-    if (indiceCarta < carta.length) {
+    const textoCarta = document.getElementById("textoCarta");
+    if (textoCarta && indiceCarta < carta.length) {
         textoCarta.textContent += carta.charAt(indiceCarta);
         indiceCarta++;
-        setTimeout(escribirCarta, 38);
+        setTimeout(escribirCarta, 35);
     }
 }
 
 const botonAbrir = document.getElementById("btnAbrirSobre");
 const boton5 = document.getElementById("boton5");
 
-botonAbrir.onclick = () => {
-    botonAbrir.style.display = "none";
-    document.querySelector(".envelope").classList.add("open");
-    setTimeout(() => {
-        escribirCarta();
+if (botonAbrir) {
+    botonAbrir.onclick = () => {
+        botonAbrir.style.display = "none";
+        document.querySelector(".envelope").classList.add("open");
         setTimeout(() => {
-            boton5.classList.remove("oculto");
-        }, 6500);
-    }, 1200);
-};
+            escribirCarta();
+            setTimeout(() => {
+                if(boton5) boton5.classList.remove("oculto");
+            }, 6000);
+        }, 1000);
+    };
+}
 
-boton5.onclick = () => {
-    cambiarEscena("escena5", "escena6");
-    iniciarGaleria();
-};
+if (boton5) {
+    boton5.onclick = () => {
+        cambiarEscena("escena5", "escena6");
+        iniciarGaleria();
+    };
+}
 
 // GALERÍA DE FOTOS (ESCENA 6)
 const fotos = ["amor.jpg", "feli.jpg", "felij.jpg", "familia.jpg", "nojada.jpg", "Ojos.jpg", "Diosa.jpg", "divina.jpg", "bonita.jpg", "cariño.jpg"];
 let indiceFoto = 0;
 let intervaloGaleria;
-const galeria = document.getElementById("galeriaFoto");
 
 function cambiarFoto() {
+    const galeria = document.getElementById("galeriaFoto");
     if (!galeria) return;
     galeria.style.opacity = 0;
     setTimeout(() => {
         indiceFoto = (indiceFoto + 1) % fotos.length;
         galeria.src = fotos[indiceFoto];
         galeria.style.opacity = 1;
+        actualizarIndicadores();
     }, 500);
 }
 
 function iniciarGaleria() {
+    const contenedorIndicadores = document.getElementById("indicadores");
+    if (contenedorIndicadores && contenedorIndicadores.children.length === 0) {
+        fotos.forEach((_, index) => {
+            const ind = document.createElement("div");
+            ind.className = `indicador ${index === 0 ? 'activo' : ''}`;
+            contenedorIndicadores.appendChild(ind);
+        });
+    }
     if (!intervaloGaleria) intervaloGaleria = setInterval(cambiarFoto, 3000);
+}
+
+function actualizarIndicadores() {
+    const inds = document.querySelectorAll(".indicador");
+    inds.forEach((ind, index) => {
+        if (index === indiceFoto) ind.classList.add("activo");
+        else ind.classList.remove("activo");
+    });
 }
 
 document.getElementById("boton6").onclick = () => {
@@ -196,7 +218,7 @@ document.getElementById("detener").onclick = () => {
     const numero = document.getElementById("contadorAleatorio");
     if (numero) {
         numero.innerHTML = "❤️";
-        numero.style.fontSize = "80px";
+        numero.style.fontSize = "75px";
     }
     document.getElementById("respuestaAmor").innerHTML = "Todos los días quiero verte ❤️";
     document.getElementById("boton7").classList.remove("oculto");
@@ -211,13 +233,11 @@ document.getElementById("boton7").onclick = () => {
 // MÁQUINA DE ESCRIBIR - ESCENA 8
 const mensajeFinal = `Eres mi niña.\nMi preciosa.\nMi corazón bonito.\nGracias por cada sonrisa.\nGracias por cada abrazo.\nGracias por existir.\nNo sabes lo feliz que me haces.\nY quiero seguir compartiendo\nmuchísimos momentos contigo.`;
 let indiceMensaje = 0;
-const mensajeElemento = document.getElementById("mensajeFinal");
 
 function escribirMensaje(){
-    if(indiceMensaje < mensajeFinal.length){
-        if (mensajeElemento) {
-            mensajeElemento.innerHTML += mensajeFinal.charAt(indiceMensaje) === '\n' ? '<br>' : mensajeFinal.charAt(indiceMensaje);
-        }
+    const mensajeElemento = document.getElementById("mensajeFinal");
+    if(mensajeElemento && indiceMensaje < mensajeFinal.length){
+        mensajeElemento.innerHTML += mensajeFinal.charAt(indiceMensaje) === '\n' ? '<br>' : mensajeFinal.charAt(indiceMensaje);
         indiceMensaje++;
         setTimeout(escribirMensaje, 45);
     }
