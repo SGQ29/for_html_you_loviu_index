@@ -1,21 +1,16 @@
 //================================================
 // PARA JACQUELINE ❤️
-// Script Unificado
+// Script Unificado Corregido
 //================================================
 
-//===============================================
-// MENSAJE INICIAL
-//===============================================
-const mensaje = `
-Mi preciosa.
+const mensaje = `Mi preciosa.
 
 Tengo algo importante
 que decirte...
 
 Y espero que me regales
 unos minutitos
-de tu tiempo ❤️
-`;
+de tu tiempo ❤️`;
 
 let i = 0;
 let texto = "";
@@ -31,14 +26,12 @@ function escribir() {
 }
 escribir();
 
-//===============================================
-// ESTRELLAS
-//===============================================
 function estrellas() {
     const fondo = document.getElementById("stars");
     const fragmento = document.createDocumentFragment();
 
     for (let i = 0; i < 100; i++) {
+        const estrella = document.createElement("div");
         const estrella = document.createElement("div");
         estrella.className = "star";
         estrella.style.left = Math.random() * 100 + "vw";
@@ -52,9 +45,6 @@ function estrellas() {
 }
 estrellas();
 
-//===============================================
-// CORAZONES FLOTANDO
-//===============================================
 function crearCorazon() {
     if (document.hidden) return;
 
@@ -71,38 +61,23 @@ function crearCorazon() {
 }
 setInterval(crearCorazon, 1800);
 
-//===============================================
-// CAMBIO DE ESCENAS
-//===============================================
 function cambiarEscena(actual, siguiente) {
     document.getElementById(actual).classList.add("oculto");
     document.getElementById(siguiente).classList.remove("oculto");
 }
 
-//===============================================
-// MÚSICA
-//===============================================
 const musica = document.getElementById("musica");
 
-//===============================================
-// ESCENA 1
-//===============================================
 document.getElementById("boton1").onclick = () => {
     clearTimeout(maquina);
     musica.play().catch(() => {});
     cambiarEscena("escena1", "escena2");
 };
 
-//===============================================
-// ESCENA 2
-//===============================================
 document.getElementById("boton2").onclick = () => {
     cambiarEscena("escena2", "escena3");
 };
 
-//===============================================
-// TARJETAS (ESCENA 3)
-//===============================================
 let abiertas = 0;
 function revelarTarjeta(tarjeta) {
     if (tarjeta.classList.contains("revelada")) return;
@@ -121,9 +96,6 @@ document.getElementById("boton3").onclick = () => {
     cambiarEscena("escena3", "escena4");
 };
 
-//===============================================
-// BOTÓN "NO" (ESCENA 4)
-//===============================================
 const botonNo = document.getElementById("no");
 
 function moverBoton() {
@@ -138,18 +110,11 @@ function moverBoton() {
 botonNo.addEventListener("mouseover", moverBoton);
 botonNo.addEventListener("touchstart", moverBoton, { passive: true });
 
-//===============================================
-// BOTÓN "SÍ" (ESCENA 4)
-//===============================================
 document.getElementById("si").onclick = () => {
     cambiarEscena("escena4", "escena5");
 };
 
-//===============================================
-// CARTA (ESCENA 5)
-//===============================================
-const carta = `
-Mi niña...
+const carta = `Mi niña...
 Mi preciosa...
 Mi corazón bonito...
 Quiero que nunca olvides
@@ -162,8 +127,7 @@ Me encanta escuchar tu voz,
 verte sonreír
 y compartir momentos contigo.
 Espero poder seguir creando
-muchísimos recuerdos contigo.
-`;
+muchísimos recuerdos contigo.`;
 
 let indiceCarta = 0;
 const textoCarta = document.getElementById("textoCarta");
@@ -176,9 +140,6 @@ function escribirCarta() {
     }
 }
 
-//===============================================
-// BOTÓN ABRIR SOBRE (ESCENA 5)
-//===============================================
 const botonAbrir = document.getElementById("btnAbrirSobre");
 const boton5 = document.getElementById("boton5");
 
@@ -200,9 +161,6 @@ boton5.onclick = () => {
     iniciarGaleria();
 };
 
-//===============================================
-// GALERÍA (ESCENA 6)
-//===============================================
 const fotos = [
     "amor.jpg",
     "feli.jpg",
@@ -243,9 +201,6 @@ document.getElementById("boton6").onclick = () => {
     iniciarContador();
 };
 
-//===============================================
-// CONTADOR (ESCENA 7)
-//===============================================
 let cronometro;
 
 function iniciarContador() {
@@ -267,11 +222,7 @@ document.getElementById("detener").onclick = () => {
     document.getElementById("detener").style.display = "none";
 };
 
-//===============================================
-// MENSAJE FINAL (ESCENA 8)
-//===============================================
-const mensajeFinal = `
-Eres mi niña.
+const mensajeFinal = `Eres mi niña.
 Mi preciosa.
 Mi corazón bonito.
 Gracias por cada sonrisa.
@@ -280,8 +231,7 @@ Gracias por existir.
 No sabes lo feliz que me haces.
 Y quiero seguir compartiendo
 muchísimos momentos contigo.
-Te quiero muchísimo ❤️
-`;
+Te quiero muchísimo ❤️`;
 
 let indiceMensaje = 0;
 const mensajeElemento = document.getElementById("mensajeFinal");
@@ -299,9 +249,6 @@ document.getElementById("boton7").onclick = () => {
     escribirMensaje();
 };
 
-//===============================================
-// INTERACCIONES FINALES (ESCENAS 8, 9, 10)
-//===============================================
 document.getElementById("boton8").onclick = () => {
     cambiarEscena("escena8", "escena9");
 };
@@ -310,9 +257,6 @@ document.getElementById("boton9").onclick = () => {
     cambiarEscena("escena9", "escena10");
 };
 
-//===============================================
-// EFECTO EXTRA DE CORAZONES EN ESCENA FINAL
-//===============================================
 function lluviaFinal() {
     const corazon = document.createElement("div");
     corazon.innerHTML = "💖";
@@ -327,7 +271,6 @@ function lluviaFinal() {
     }, 5000);
 }
 
-// Observador para activar la lluvia intensa al mostrar la escena 10
 const escena10 = document.getElementById("escena10");
 const observador = new MutationObserver(() => {
     if (!escena10.classList.contains("oculto")) {
@@ -336,5 +279,4 @@ const observador = new MutationObserver(() => {
 });
 
 observador.observe(escena10, { attributes: true });
-
 console.log("Para la niña más bonita del mundo ❤️");
