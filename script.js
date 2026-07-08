@@ -279,32 +279,21 @@ document
 
 const carta = `
 Mi niña...
-
 Mi preciosa...
-
 Mi corazón bonito...
-
 Quiero que nunca olvides
 lo especial que eres para mí.
-
 Gracias por cada sonrisa.
-
 Gracias por cada abrazo.
-
 Gracias por hacerme sentir
 tan tranquilo cuando estoy contigo.
-
 Me encanta escuchar tu voz,
 verte sonreír
 y compartir momentos contigo.
-
 Eres mi lugar seguro.
-
 Y espero poder seguir creando
 muchísimos recuerdos contigo.
-
 Con muchísimo cariño...
-
 Polar ❤️
 `;
 
