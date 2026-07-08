@@ -649,21 +649,9 @@ z-index:2;
 }
 
 .envelope.open .letter{
-
-transform:
-
-translateY(-165px);
-
-height:440px;
-
-z-index:3;
-
-box-shadow:
-
-0 -10px 20px rgba(255,70,120,.3),
-
-0 15px 30px rgba(0,0,0,.35);
-
+    transform:translateY(-160px);
+    z-index:3;
+    height:500px;
 }
 
 /*==========================
