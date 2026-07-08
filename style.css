@@ -1,151 +1,157 @@
 /*======================================================
-SOBRE Y CARTA PREMIUM (ESCENA 5) - CENTRADO ABSOLUTO
+ESCENA 5: SOBRE Y CARTA (CON CENTRADO ABSOLUTO ORIGINAL)
 ======================================================*/
-.envelope-wrapper{
-    position:relative;
-    width:420px; /* Reducido ligeramente para optimizar espacio */
-    height:260px; /* Reducido ligeramente para optimizar espacio */
-    margin:60px auto 20px auto; /* Margen equilibrado para mantener todo centrado */
+
+/* Forzamos que el wrapper mantenga dimensiones perfectas dentro del .container */
+.envelope-wrapper {
+    position: relative;
+    width: 380px;         /* Reducido sutilmente para optimizar la altura total en vertical */
+    height: 240px;        /* Reducido sutilmente para optimizar la altura total en vertical */
+    margin: 40px auto 20px auto; /* Márgenes compactos para no empujar los botones fuera del contenedor */
+    overflow: visible;
 }
 
-#btnAbrirSobre{
-    position:absolute;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    z-index:100;
-    margin:0;
+#btnAbrirSobre {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    margin: 0;
 }
 
-.envelope{
-    position:relative;
-    width:100%;
-    height:100%;
-    background:#30000f;
-    border-radius:0 0 12px 12px;
-    overflow:visible;
-    box-shadow:0 15px 35px rgba(0,0,0,.65), 0 0 35px rgba(255,0,90,.25);
+.envelope {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #30000f;
+    border-radius: 0 0 12px 12px;
+    overflow: visible;
+    box-shadow: 0 15px 35px rgba(0,0,0,.65), 0 0 35px rgba(255,0,90,.25);
 }
 
-.flap{
-    position:absolute;
-    top:0;
-    left:0;
-    width:0;
-    height:0;
-    border-left:210px solid transparent;
-    border-right:210px solid transparent;
-    border-top:140px solid #5a0c2a;
-    transform-origin:top;
-    transition:1s;
-    z-index:5;
+/* Ajuste de las solapas del sobre al nuevo ancho de 380px (380 / 2 = 190) */
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 190px solid transparent;
+    border-right: 190px solid transparent;
+    border-top: 130px solid #5a0c2a;
+    transform-origin: top;
+    transition: 1s;
+    z-index: 5;
 }
 
-.pocket{
-    position:absolute;
-    top:0;
-    left:0;
-    width:0;
-    height:0;
-    border-left:210px solid #4a0018;
-    border-right:210px solid #4a0018;
-    border-top:120px solid transparent;
-    border-bottom:140px solid #4a0018;
-    z-index:4;
+.pocket {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 190px solid #4a0018;
+    border-right: 190px solid #4a0018;
+    border-top: 110px solid transparent;
+    border-bottom: 130px solid #4a0018;
+    z-index: 4;
 }
 
-.envelope::after{
-    content:"❤️";
-    position:absolute;
-    bottom:20px;
-    left:50%;
-    transform:translateX(-50%);
-    font-size:38px;
-    z-index:6;
-    filter:drop-shadow(0 0 12px crimson);
+.envelope::after {
+    content: "❤️";
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 36px;
+    z-index: 6;
+    filter: drop-shadow(0 0 12px crimson);
 }
 
-.letter{
-    position:absolute;
-    left:15px;
-    bottom:15px;
-    width:390px;
-    height:230px;
-    background:white;
-    border-radius:15px;
-    padding:15px;
-    overflow:hidden;
-    transition:1.2s;
-    box-shadow:0 5px 15px rgba(0,0,0,.3);
-    z-index:2;
+/* La carta en estado cerrado dentro del sobre */
+.letter {
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
+    width: 350px;        /* Adaptado al nuevo ancho del sobre */
+    height: 210px;
+    background: white;
+    border-radius: 15px;
+    padding: 12px;
+    overflow: hidden;
+    transition: 1.2s;
+    box-shadow: 0 5px 15px rgba(0,0,0,.3);
+    z-index: 2;
 }
 
-.letter-border{
-    width:100%;
-    height:100%;
-    border:1px dashed #ebb0c8;
-    border-radius:12px;
-    padding:15px;
-    overflow-y:auto;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    scrollbar-width:none;
-    -ms-overflow-style:none;
+.letter-border {
+    width: 100%;
+    height: 100%;
+    border: 1px dashed #ebb0c8;
+    border-radius: 12px;
+    padding: 15px;
+    overflow-y: auto;    /* Permite hacer scroll en el texto si es muy largo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
-.letter-border::-webkit-scrollbar{
-    display:none;
+.letter-border::-webkit-scrollbar {
+    display: none;       /* Oculta la barra de scroll en Chrome/Safari */
 }
 
-.letter-heart-top{
-    font-size:15px;
-    margin-bottom:8px;
-    color:#ff2f73;
+.letter-heart-top {
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #ff2f73;
 }
 
-.letter-text{
-    width:100%;
-    font-size:16px;
-    line-height:26px;
-    color:#40232b;
-    text-align:center;
-    display:block;
-    white-space:pre-line;
+.letter-text {
+    width: 100%;
+    font-size: 15px;
+    line-height: 24px;
+    color: #40232b;
+    text-align: center;
+    display: block;
+    white-space: pre-line;
 }
 
-.envelope.open .flap{
-    transform:rotateX(180deg);
-    z-index:1;
+.envelope.open .flap {
+    transform: rotateX(180deg);
+    z-index: 1;
 }
 
-/* AQUÍ ESTÁ EL CAMBIO CLAVE: Reducimos el desplazamiento hacia arriba y la altura total */
-.envelope.open .letter{
-    transform:translateY(-110px); /* Evita que la carta toque el borde superior del navegador */
-    height:330px; /* Tamaño ideal para albergar el texto con scroll interno si es necesario */
-    z-index:3;
-    box-shadow:0 -10px 20px rgba(255,70,120,.3), 0 15px 30px rgba(0,0,0,.35);
+/* SOLUCIÓN AL CORTE: La carta ahora sube la distancia justa (-100px) y crece de forma segura */
+.envelope.open .letter {
+    transform: translateY(-100px); 
+    height: 310px;       /* Altura ideal para albergar los versos sin salirse de la pantalla */
+    z-index: 3;
+    box-shadow: 0 -10px 20px rgba(255,70,120,.3), 0 15px 30px rgba(0,0,0,.35);
 }
 
-.decoracion-inferior{
-    margin-top:25px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    position:relative;
+/* Decoraciones inferiores debajo de la carta */
+.decoracion-inferior {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
-.corazon-centro{
-    font-size:26px;
-    padding:0 12px;
-    color:#d783ff;
-    filter:drop-shadow(0 0 12px #d783ff);
-    z-index:2;
+.corazon-centro {
+    font-size: 24px;
+    padding: 0 10px;
+    color: #d783ff;
+    filter: drop-shadow(0 0 12px #d783ff);
+    z-index: 2;
 }
 
-.lineas-decorativas{
-    position:absolute;
-    width:260px;
-    height:2px;
-    background:linear-gradient(to right,transparent,#7b2bff,#d783ff,#7b2bff,transparent);
+.lineas-decorativas {
+    position: absolute;
+    width: 220px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #7b2bff, #d783ff, #7b2bff, transparent);
 }
