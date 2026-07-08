@@ -1,6 +1,6 @@
 /*======================================================
  PARA JACQUELINE ❤️
- Style Completo Corregido
+ Style Completo Corregido Sin Errores de Codificación
 ======================================================*/
 
 *{
@@ -261,9 +261,6 @@ SOBRE Y CARTA PREMIUM (ESCENA 5)
     box-shadow:0 15px 35px rgba(0,0,0,.65), 0 0 35px rgba(255,0,90,.25);
 }
 
-/*==========================
-SOLAPA
-==========================*/
 .flap{
     position:absolute;
     top:0;
@@ -278,9 +275,6 @@ SOLAPA
     z-index:5;
 }
 
-/*==========================
-BOLSILLO
-==========================*/
 .pocket{
     position:absolute;
     top:0;
@@ -305,9 +299,6 @@ BOLSILLO
     filter:drop-shadow(0 0 12px crimson);
 }
 
-/*==========================
-CARTA
-==========================*/
 .letter{
     position:absolute;
     left:15px;
@@ -357,9 +348,6 @@ CARTA
     text-align:center;
 }
 
-/*==========================
-SOBRE ABIERTO
-==========================*/
 .envelope.open .flap{
     transform:rotateX(180deg);
     z-index:1;
@@ -372,9 +360,6 @@ SOBRE ABIERTO
     box-shadow:0 -10px 20px rgba(255,70,120,.3), 0 15px 30px rgba(0,0,0,.35);
 }
 
-/*==========================
-DECORACIÓN
-==========================*/
 .decoracion-inferior{
     margin-top:25px;
     display:flex;
@@ -529,37 +514,36 @@ ESCENA 9
 }
 
 /*======================================================
-ESCENA 10
+ESCENA 10 (ESTILOS CONSOLIDADOS)
 ======================================================*/
 #escena10{
     animation:fade 1.5s;
 }
 
-#escena10 h1{
-    font-size:62px;
-    color:white;
-    text-shadow:0 0 20px deeppink, 0 0 40px purple, 0 0 80px crimson;
-    animation:brillo 2s infinite;
+.subtitulo-final{
+    color:white; 
+    font-size:42px; 
+    margin-top:20px;
 }
 
-#escena10 h2{
-    font-size:42px;
-    margin-top:25px;
-    color:#ffe0f2;
-    text-shadow:0 0 18px hotpink;
-}
-
-#escena10 p{
-    margin-top:35px;
-    font-size:28px;
-    line-height:50px;
-    color:white;
-    text-shadow:0 0 12px purple, 0 0 25px crimson;
+.texto-final{
+    color:white; 
+    font-size:28px; 
+    line-height:50px; 
+    margin-top:40px; 
+    text-shadow:0 0 15px purple;
     max-width:800px;
 }
 
+.firma-final{
+    color:#ffd6f7; 
+    margin-top:50px; 
+    font-size:45px; 
+    text-shadow:0 0 25px deeppink;
+}
+
 /*======================================================
-ESTRELLAS
+ESTRELLAS Y ANIMACIONES
 ======================================================*/
 .star{
     position:absolute;
@@ -575,9 +559,6 @@ ESTRELLAS
     100%{ opacity:.2; }
 }
 
-/*======================================================
-CORAZONES
-======================================================*/
 .corazon{
     position:fixed;
     bottom:-60px;
@@ -588,19 +569,10 @@ CORAZONES
 }
 
 @keyframes subir{
-    0%{
-        transform:translateY(0) rotate(0deg);
-        opacity:1;
-    }
-    100%{
-        transform:translateY(-110vh) rotate(360deg);
-        opacity:0;
-    }
+    0%{ transform:translateY(0) rotate(0deg); opacity:1; }
+    100%{ transform:translateY(-110vh) rotate(360deg); opacity:0; }
 }
 
-/*======================================================
-ANIMACIONES
-======================================================*/
 @keyframes brillo{
     0%{ opacity:.6; }
     50%{ opacity:1; }
@@ -608,14 +580,8 @@ ANIMACIONES
 }
 
 @keyframes aparecerFinal{
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+    from{ opacity:0; transform:translateY(40px); }
+    to{ opacity:1; transform:translateY(0); }
 }
 
 /*======================================================
@@ -659,8 +625,7 @@ RESPONSIVE
     #contadorAleatorio{ font-size:70px; }
     #mensajeFinal{ font-size:22px; line-height:38px; }
     #final{ font-size:48px; line-height:60px; }
-    #escena10 h1{ font-size:42px; }
-    #escena10 h2{ font-size:30px; }
-    #escena10 p{ font-size:22px; line-height:38px; }
+    .subtitulo-final{ font-size:30px; }
+    .texto-final{ font-size:22px; line-height:38px; }
     .btn-principal{ font-size:18px; padding:14px 28px; }
 }
