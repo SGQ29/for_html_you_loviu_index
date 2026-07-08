@@ -1,6 +1,6 @@
 /*======================================================
  PARA JACQUELINE ❤️
- Style Completo Corregido - 100% Responsivo y Estable
+ Style Completo Corregido
 ======================================================*/
 
 *{
@@ -10,9 +10,9 @@
 }
 
 body{
-    overflow-x:hidden;
-    overflow-y:auto; /* Permite scroll si la pantalla es muy pequeña */
-    min-height:100vh;
+    overflow:hidden;
+    width:100vw;
+    height:100vh;
     font-family:Georgia,serif;
     background:url("amor.jpg");
     background-size:cover;
@@ -26,28 +26,26 @@ OVERLAY
 ======================================================*/
 .overlay{
     position:fixed;
-    top:0;
-    left:0;
     width:100%;
     height:100%;
-    background:rgba(0,0,0,.82);
+    background:rgba(0,0,0,.78);
     backdrop-filter:blur(6px);
-    -webkit-backdrop-filter:blur(6px);
     z-index:1;
 }
 
 /*======================================================
-ESCENAS (Centrado elástico seguro)
+ESCENAS
 ======================================================*/
 .container{
-    position:relative;
-    margin: 40px auto;
-    width: 92%;
-    max-width: 750px;
-    text-align: center;
-    z-index: 10;
-    padding: 20px 10px;
-    animation: fade .6s ease-out;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:90%;
+    max-width:900px;
+    text-align:center;
+    z-index:10;
+    animation:fade .8s;
 }
 
 .oculto{
@@ -55,45 +53,46 @@ ESCENAS (Centrado elástico seguro)
 }
 
 @keyframes fade{
-    from{ opacity:0; transform:translateY(15px); }
-    to{ opacity:1; transform:translateY(0); }
+    from{
+        opacity:0;
+        transform:translate(-50%,-46%);
+    }
+    to{
+        opacity:1;
+        transform:translate(-50%,-50%);
+    }
 }
 
 /*======================================================
 BOTONES
 ======================================================*/
 .btn-principal{
-    padding:15px 35px;
-    font-size:18px;
+    padding:16px 40px;
+    font-size:20px;
     border:none;
     border-radius:50px;
     cursor:pointer;
     color:white;
-    background:linear-gradient(45deg, #5a0022, #5f2380);
-    box-shadow:0 0 15px #6d1b7b, 0 0 25px #4a0018;
-    transition:.3s transform, .3s box-shadow;
-    margin-top:30px;
-    display: inline-block;
+    background:linear-gradient(45deg,#4a0018,#5f2380);
+    box-shadow:0 0 15px #6d1b7b, 0 0 30px #4a0018;
+    transition:.4s;
+    margin-top:35px;
 }
 
 .btn-principal:hover{
-    transform:scale(1.04);
-    box-shadow:0 0 20px #ff006a, 0 0 40px purple;
+    transform:scale(1.05);
+    box-shadow:0 0 20px #ff006a, 0 0 50px purple;
 }
 
 /*======================================================
 ESCENA 1
 ======================================================*/
-.img-wrapper {
-    margin-bottom: 20px;
-}
-
 #fotoPrincipal{
-    width:280px;
-    max-width:80vw;
-    border-radius:20px;
-    box-shadow:0 0 25px purple, 0 0 45px crimson;
-    animation:latir 3s infinite ease-in-out;
+    width:340px;
+    max-width:85vw;
+    border-radius:25px;
+    box-shadow:0 0 25px purple, 0 0 55px crimson;
+    animation:latir 3s infinite;
 }
 
 @keyframes latir{
@@ -102,35 +101,35 @@ ESCENA 1
 }
 
 #texto{
-    margin-top:20px;
+    margin-top:30px;
     color:white;
-    font-size:26px;
-    line-height:42px;
-    min-height:140px;
-    text-shadow:0 0 10px purple, 0 0 20px crimson;
+    font-size:34px;
+    line-height:55px;
+    min-height:180px;
+    text-shadow:0 0 10px purple, 0 0 25px crimson;
 }
 
 /*======================================================
 TÍTULOS Y TEXTOS
 ======================================================*/
 .titulo-escena{
-    font-size:34px;
+    font-size:42px;
     color:white;
-    text-shadow:0 0 15px #8d48ff, 0 0 25px crimson;
-    margin-bottom: 20px;
+    text-shadow:0 0 15px #8d48ff, 0 0 35px crimson;
 }
 
 .subtitulo-escena{
-    margin-top:5px;
-    font-size:18px;
+    margin-top:10px;
+    font-size:20px;
     color:#e0c9ff;
 }
 
 .texto-intermedio{
-    font-size:21px;
-    line-height:38px;
+    margin-top:25px;
+    font-size:24px;
+    line-height:42px;
     color:white;
-    text-shadow:0 0 10px black;
+    text-shadow:0 0 12px black;
 }
 
 /*======================================================
@@ -140,15 +139,16 @@ TARJETAS (ESCENA 3)
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:15px;
+    gap:20px;
     flex-wrap:wrap;
-    margin-top:30px;
+    margin-top:35px;
 }
 
 .tarjeta{
-    width:160px;
-    height:200px;
+    width:180px;
+    height:220px;
     perspective:1000px;
+    cursor:pointer;
 }
 
 .tarjeta-interior{
@@ -156,7 +156,7 @@ TARJETAS (ESCENA 3)
     height:100%;
     position:relative;
     transform-style:preserve-3d;
-    transition: transform .6s;
+    transition:.8s;
 }
 
 .tarjeta.revelada .tarjeta-interior{
@@ -167,43 +167,41 @@ TARJETAS (ESCENA 3)
     position:absolute;
     width:100%;
     height:100%;
-    border-radius:20px;
+    border-radius:25px;
     display:flex;
     justify-content:center;
     align-items:center;
-    padding:12px;
+    padding:15px;
     backface-visibility:hidden;
     text-align:center;
 }
 
 .tarjeta-frente{
-    background:linear-gradient(135deg, #4b0018, #5f2380);
+    background:linear-gradient(135deg,#4b0018,#5f2380);
     color:white;
-    font-size:20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    font-size:22px;
 }
 
 .tarjeta-atras{
     background:white;
-    color:#222;
+    color:#333;
     transform:rotateY(180deg);
-    font-size:14px;
-    line-height:22px;
-    border: 2px solid #5f2380;
+    font-size:15px;
+    line-height:24px;
 }
 
 /*======================================================
 PREGUNTA (ESCENA 4)
 ======================================================*/
 .pregunta{
-    font-size:32px;
-    line-height:48px;
+    font-size:38px;
+    line-height:55px;
     color:white;
     text-shadow:0 0 15px purple;
 }
 
 .botones-container{
-    margin-top:30px;
+    margin-top:35px;
     display:flex;
     justify-content:center;
     gap:20px;
@@ -211,27 +209,36 @@ PREGUNTA (ESCENA 4)
 }
 
 #si, #no{
-    padding:14px 30px;
-    font-size:20px;
+    padding:16px 35px;
+    font-size:22px;
     border:none;
     border-radius:30px;
     cursor:pointer;
     transition:.3s;
 }
 
-#si{ background:#5f2380; color:white; box-shadow: 0 4px 15px rgba(109,27,123,0.6); }
-#si:hover{ transform:scale(1.05); }
-#no{ background:#7a001f; color:white; }
+#si{
+    background:#5f2380;
+    color:white;
+}
+
+#si:hover{
+    transform:scale(1.08);
+}
+
+#no{
+    background:#7a001f;
+    color:white;
+}
 
 /*======================================================
 SOBRE Y CARTA PREMIUM (ESCENA 5)
 ======================================================*/
 .envelope-wrapper{
     position:relative;
-    width:100%;
-    max-width:400px;
-    height:260px;
-    margin:40px auto;
+    width:460px;
+    height:310px;
+    margin:110px auto 20px auto;
 }
 
 #btnAbrirSobre{
@@ -247,9 +254,10 @@ SOBRE Y CARTA PREMIUM (ESCENA 5)
     position:relative;
     width:100%;
     height:100%;
-    background:#29000c;
+    background:#30000f;
     border-radius:0 0 12px 12px;
-    box-shadow:0 15px 30px rgba(0,0,0,.6);
+    overflow:visible;
+    box-shadow:0 15px 35px rgba(0,0,0,.65), 0 0 35px rgba(255,0,90,.25);
 }
 
 .flap{
@@ -258,11 +266,11 @@ SOBRE Y CARTA PREMIUM (ESCENA 5)
     left:0;
     width:0;
     height:0;
-    border-left:200px solid transparent;
-    border-right:200px solid transparent;
-    border-top:140px solid #520925;
+    border-left:230px solid transparent;
+    border-right:230px solid transparent;
+    border-top:165px solid #5a0c2a;
     transform-origin:top;
-    transition: transform 0.8s ease;
+    transition:1s;
     z-index:5;
 }
 
@@ -272,54 +280,51 @@ SOBRE Y CARTA PREMIUM (ESCENA 5)
     left:0;
     width:0;
     height:0;
-    border-left:200px solid #420014;
-    border-right:200px solid #420014;
-    border-top:120px solid transparent;
-    border-bottom:140px solid #420014;
-    border-radius:0 0 12px 12px;
+    border-left:230px solid #4a0018;
+    border-right:230px solid #4a0018;
+    border-top:145px solid transparent;
+    border-bottom:165px solid #4a0018;
     z-index:4;
 }
 
 .envelope::after{
     content:"❤️";
     position:absolute;
-    bottom:20px;
+    bottom:25px;
     left:50%;
     transform:translateX(-50%);
-    font-size:36px;
+    font-size:42px;
     z-index:6;
-    filter:drop-shadow(0 0 10px crimson);
+    filter:drop-shadow(0 0 12px crimson);
 }
 
-/* CARTA DESPLAZABLE */
 .letter{
     position:absolute;
-    left:15px;
+    left:20px;
     bottom:15px;
-    width:calc(100% - 30px);
-    height:230px;
+    width:420px;
+    height:280px;
     background:white;
-    border-radius:10px;
-    padding:12px;
-    transition: transform 1s ease, height 1s ease;
-    box-shadow:0 4px 10px rgba(0,0,0,.3);
+    border-radius:15px;
+    padding:15px;
+    overflow:hidden;
+    transition:1.2s;
+    box-shadow:0 5px 15px rgba(0,0,0,.3);
     z-index:2;
-}
-
-.envelope.open .letter{
-    transform:translateY(-160px);
-    z-index:20;
-    height:340px;
 }
 
 .letter-border{
     width:100%;
     height:100%;
-    border:1px dashed #e6afc2;
-    border-radius:8px;
-    padding:10px;
+    border:1px dashed #ebb0c8;
+    border-radius:12px;
+    padding:18px;
     overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
     scrollbar-width:none;
+    -ms-overflow-style:none;
 }
 
 .letter-border::-webkit-scrollbar{
@@ -327,43 +332,52 @@ SOBRE Y CARTA PREMIUM (ESCENA 5)
 }
 
 .letter-heart-top{
-    font-size:14px;
-    margin-bottom:8px;
-    text-align:center;
+    font-size:15px;
+    margin-bottom:10px;
+    color:#ff2f73;
 }
 
 .letter-text{
     width:100%;
+    font-size:17px;
+    line-height:29px;
+    color:#40232b;
     text-align:center;
-    font-size:15px;
-    line-height:24px;
-    color:#3d2229;
-    white-space:pre-line;
 }
 
-/* DECORACIÓN */
+.envelope.open .flap{
+    transform:rotateX(180deg);
+    z-index:1;
+}
+
+.envelope.open .letter{
+    transform:translateY(-180px);
+    height:460px;
+    z-index:3;
+    box-shadow:0 -10px 20px rgba(255,70,120,.3), 0 15px 30px rgba(0,0,0,.35);
+}
+
 .decoracion-inferior{
-    margin-top:20px;
+    margin-top:45px;
     display:flex;
     justify-content:center;
     align-items:center;
     position:relative;
-    height: 30px;
 }
 
 .corazon-centro{
-    font-size:24px;
+    font-size:26px;
+    padding:0 12px;
     color:#d783ff;
-    filter:drop-shadow(0 0 10px #d783ff);
+    filter:drop-shadow(0 0 12px #d783ff);
     z-index:2;
-    background: transparent;
 }
 
 .lineas-decorativas{
     position:absolute;
-    width:200px;
+    width:260px;
     height:2px;
-    background:linear-gradient(to right, transparent, #7b2bff, #d783ff, #7b2bff, transparent);
+    background:linear-gradient(to right,transparent,#7b2bff,#d783ff,#7b2bff,transparent);
 }
 
 /*======================================================
@@ -373,37 +387,38 @@ GALERÍA (ESCENA 6)
     display:flex;
     flex-direction:column;
     align-items:center;
-}
-
-#galeriaFoto{
-    width:300px;
-    max-width:85vw;
-    height: auto;
-    border-radius:20px;
-    margin-top:15px;
-    transition: opacity 0.5s;
-    box-shadow:0 0 20px purple, 0 0 35px crimson;
-}
-
-#indicadores{
-    margin-top:15px;
-    display:flex;
-    gap:8px;
     justify-content:center;
 }
 
+#galeriaFoto{
+    width:370px;
+    max-width:88vw;
+    border-radius:25px;
+    margin-top:25px;
+    transition:1s;
+    box-shadow:0 0 25px purple, 0 0 45px crimson;
+}
+
+#indicadores{
+    margin-top:20px;
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    align-items:center;
+}
+
 .indicador{
-    width:8px;
-    height:8px;
+    width:10px;
+    height:10px;
     border-radius:50%;
     background:white;
     opacity:.4;
-    transition:.3s;
+    transition:.4s;
 }
 
 .indicador.activo{
     opacity:1;
-    transform:scale(1.3);
+    transform:scale(1.5);
     background:#ff4d88;
 }
 
@@ -411,117 +426,121 @@ GALERÍA (ESCENA 6)
 CONTADOR (ESCENA 7)
 ======================================================*/
 #contadorAleatorio{
-    font-size:75px;
+    font-size:95px;
     font-weight:bold;
     color:white;
-    margin-top:20px;
-    min-height:90px;
-    text-shadow:0 0 15px #9d4dff, 0 0 30px #ff0055;
+    margin-top:35px;
+    min-height:120px;
+    text-shadow:0 0 15px #9d4dff, 0 0 35px #ff0055, 0 0 70px purple;
     animation:latirNumero 1s infinite;
 }
 
 @keyframes latirNumero{
     0%, 100%{ transform:scale(1); }
-    50%{ transform:scale(1.05); }
+    50%{ transform:scale(1.08); }
 }
 
 #respuestaAmor{
-    margin-top:15px;
-    font-size:26px;
+    margin-top:30px;
+    font-size:34px;
     font-weight:bold;
     color:white;
-    text-shadow:0 0 10px white, 0 0 20px #ff4d88;
+    min-height:60px;
+    text-shadow:0 0 12px white, 0 0 25px #ff4d88, 0 0 40px purple;
 }
 
 .botones-contador{
-    margin-top:30px;
+    margin-top:40px;
     display:flex;
     justify-content:center;
-    gap:20px;
+    gap:25px;
+    flex-wrap:wrap;
 }
 
 /*======================================================
 MENSAJE FINAL (ESCENA 8)
 ======================================================*/
 .mensaje-elegante{
-    margin-top:20px;
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
 }
 
 #mensajeFinal{
-    max-width:600px;
-    font-size:22px;
-    line-height:38px;
+    max-width:700px;
+    font-size:28px;
+    line-height:48px;
     color:white;
     text-shadow:0 0 10px purple, 0 0 20px crimson;
-    min-height:240px;
-    white-space:pre-line;
+    min-height:320px;
+    text-align:center;
 }
 
 /*======================================================
-CARD FINAL (ESCENA 9)
+ESCENA 9
 ======================================================*/
 .final-card{
     display:flex;
     flex-direction:column;
     align-items:center;
+    justify-content:center;
+    animation:aparecerFinal 1.2s;
 }
 
 #final{
-    font-size:46px;
-    line-height:60px;
+    font-size:68px;
+    line-height:85px;
     color:white;
-    text-shadow:0 0 15px #8d48ff, 0 0 30px crimson;
+    text-shadow:0 0 20px #8d48ff, 0 0 40px crimson, 0 0 80px purple;
+    animation:brillo 2s infinite;
 }
 
 #firma{
-    margin-top:15px;
-    font-size:24px;
+    margin-top:25px;
+    font-size:30px;
     color:#e6d3ff;
 }
 
 #fraseFinal{
-    margin-top:30px;
-    font-size:18px;
-    line-height:30px;
+    margin-top:40px;
+    font-size:23px;
+    line-height:38px;
     color:white;
     text-shadow:0 0 10px purple;
 }
 
 /*======================================================
-ESCENA 10 (DISEÑO GRAN FINAL PREMIUM)
+ESCENA 10
 ======================================================*/
-.final-ajustado {
-    padding: 10px;
+#escena10{
+    animation:fade 1.5s;
 }
-.titulo-escena-grandiosa {
-    font-size:38px; 
-    color:white; 
-    text-shadow:0 0 15px deeppink, 0 0 30px purple;
+
+#escena10 h1.titulo-escena{
+    font-size:62px !important;
+    color:white !important;
+    text-shadow:0 0 20px deeppink, 0 0 40px purple, 0 0 80px crimson !important;
+    animation:brillo 2s infinite;
 }
-.subtitulo-final {
-    color:white; 
-    font-size:28px; 
-    margin-top:15px; 
-    text-shadow:0 0 12px hotpink;
+
+#escena10 h2{
+    font-size:42px !important;
+    margin-top:25px !important;
+    color:#ffe0f2 !important;
+    text-shadow:0 0 18px hotpink !important;
 }
-.carta-final-parrafo {
-    color:white; 
-    font-size:18px; 
-    line-height:32px; 
-    margin-top:25px; 
-    text-shadow:0 0 8px purple; 
-    max-width:650px; 
-    text-align:center;
-}
-.firma-final {
-    color:#ffd6f7; 
-    margin-top:30px; 
-    font-size:28px; 
-    text-shadow:0 0 15px deeppink;
+
+#escena10 p{
+    margin-top:35px !important;
+    font-size:26px !important;
+    line-height:46px !important;
+    color:white !important;
+    text-shadow:0 0 12px purple, 0 0 25px crimson !important;
+    max-width:800px;
 }
 
 /*======================================================
-ESTRELLAS Y CORAZONES
+ESTRELLAS Y CORAZONES FLOTANTES
 ======================================================*/
 .star{
     position:absolute;
@@ -532,16 +551,17 @@ ESTRELLAS Y CORAZONES
 }
 
 @keyframes parpadear{
-    0%, 100%{ opacity:.3; }
+    0%, 100%{ opacity:.2; }
     50%{ opacity:1; }
 }
 
 .corazon{
     position:fixed;
-    bottom:-40px;
+    bottom:-60px;
+    font-size:24px;
     pointer-events:none;
     z-index:20;
-    animation:subir 4s linear forwards;
+    animation:subir 5s linear forwards;
 }
 
 @keyframes subir{
@@ -550,48 +570,49 @@ ESTRELLAS Y CORAZONES
 }
 
 /*======================================================
-RESPONSIVE AJUSTES EXTRAS PARA PANTALLAS MUY PEQUEÑAS
+ANIMACIONES EXTRA
 ======================================================*/
-@media(max-width:440px){
-    #texto{ font-size:20px; line-height:34px; min-height:160px; }
-    .titulo-escena { font-size: 26px; }
-    .texto-intermedio { font-size: 17px; line-height: 30px; }
+@keyframes brillo{
+    0%, 100%{ opacity:.6; }
+    50%{ opacity:1; }
+}
+
+@keyframes aparecerFinal{
+    from{ opacity:0; transform:translateY(40px); }
+    to{ opacity:1; transform:translateY(0); }
+}
+
+/*======================================================
+RESPONSIVE (MÓVILES Y TABLETS)
+======================================================*/
+@media(max-width:768px){
+    #fotoPrincipal{ width:250px; }
+    #texto{ font-size:24px; line-height:42px; min-height:140px; }
+    .titulo-escena{ font-size:30px; }
+    .texto-intermedio{ font-size:18px; line-height:32px; }
+    .tarjeta{ width:140px; height:180px; }
+    .tarjeta-frente{ font-size:18px; }
+    .tarjeta-atras{ font-size:13px; line-height:20px; }
+    .pregunta{ font-size:28px; line-height:42px; }
+
+    /* Ajuste responsivo de la carta */
+    .envelope-wrapper{ width:320px; height:220px; margin-top:80px; }
+    .flap{ border-left:160px solid transparent; border-right:160px solid transparent; border-top:110px solid #5a0c2a; }
+    .pocket{ border-left:160px solid #4a0018; border-right:160px solid #4a0018; border-top:100px solid transparent; border-bottom:120px solid #4a0018; }
+    .letter{ width:285px; height:200px; left:18px; bottom:10px; }
+    .envelope.open .letter{ height:340px; transform:translateY(-140px); }
+    .letter-text{ font-size:15px; line-height:24px; }
+
+    #galeriaFoto{ width:280px; }
+    #contadorAleatorio{ font-size:70px; }
+    #respuestaAmor{ font-size:26px; }
+    #mensajeFinal{ font-size:20px; line-height:36px; min-height:260px; }
+    #final{ font-size:44px; line-height:58px; }
+
+    /* Mitigación de estilos en línea en Escena 10 */
+    #escena10 h1.titulo-escena{ font-size:38px !important; }
+    #escena10 h2{ font-size:28px !important; }
+    #escena10 p{ font-size:18px !important; line-height:34px !important; }
     
-    .envelope-wrapper{
-        max-width:290px;
-        height:190px;
-    }
-    .flap{
-        border-left:145px solid transparent;
-        border-right:145px solid transparent;
-        border-top:100px solid #520925;
-    }
-    .pocket{
-        border-left:145px solid #420014;
-        border-right:145px solid #420014;
-        border-top:90px solid transparent;
-        border-bottom:100px solid #420014;
-    }
-    .letter{
-        width:calc(100% - 24px);
-        height:165px;
-        left:12px;
-    }
-    .envelope.open .letter{
-        height:245px;
-        transform:translateY(-110px);
-    }
-    .letter-text{
-        font-size:13px;
-        line-height:20px;
-    }
-    
-    .titulo-escena-grandiosa { font-size: 28px !important; }
-    .subtitulo-final { font-size: 22px !important; }
-    .carta-final-parrafo { font-size: 15px !important; line-height: 26px !important; }
-    .firma-final { font-size: 22px !important; }
-    
-    #contadorAleatorio { font-size: 55px; }
-    #mensajeFinal { font-size: 17px; line-height: 30px; }
-    #final { font-size: 32px; line-height: 45px; }
+    .btn-principal{ font-size:18px; padding:14px 28px; }
 }
